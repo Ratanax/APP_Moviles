@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div id="contenedor">
+
+    <ion-input 
+    [(ngModel)]="usuario"
+    label="Usuario" 
+    labelPlacement="floating" 
+    fill="outline"
+    [counter]="true"
+    maxlength="20"
+    [clearInput]="true"> </ion-input>
+
+    <ion-input 
+    [(ngModel)]="clave"
+    label="contraseña" 
+    type="{{sw?'text':'password'}}"
+    labelPlacement="floating" 
+    fill="outline"
+    [clearInput]="true"> <ion-button fill="clear" slot="end" aria-label="Show/hide" (click)="sw=!sw">
+      <ion-icon slot="icon-only" name="{{sw?'eye-off':'eye'}}" aria-hidden="true"></ion-icon>
+    </ion-button> </ion-input>
+    
+    <ion-button expand="block"
+ 
+    (click)="login()">Iniciar sesion </ion-button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button size="small" color="danger" (click)="presentAlert()">
+    aceptar
+    <ion-icon slot="" name="heart"></ion-icon>
+
+  </ion-button>
+  
+  <ion-button id="open-toast" color="danger">Open Toast</ion-button>
+  <ion-toast message="This toast can be swiped to dismiss" trigger="open-toast" swipeGesture="vertical"
+    position="bottom" positionAnchor="footer"></ion-toast>
+   
+    
+</ion-content>

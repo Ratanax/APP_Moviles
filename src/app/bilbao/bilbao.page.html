@@ -1,0 +1,15 @@
+<ion-content [fullscreen]="true">
+  
+  
+  
+   <ion-icon src="/assets/{{icono}}.svg" id="tema-claro" (click)="cambiarTema()"></ion-icon>
+  <div class="contenedor">
+    <ion-icon src="/assets/Logo.svg" id="logo">src</ion-icon>
+    <h1>Bilbao</h1>
+    <input type="text" placeholder="Nombre" (blur)="animarError(0)">
+    <input type="password" placeholder="contraseña"  (blur)="animarError(1)">
+    <button>Ingresar</button>
+    <p>Olvide la contraseña</p>
+
+  </div>
+</ion-content>
