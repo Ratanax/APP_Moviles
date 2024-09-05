@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'bilbao',
     loadChildren: () => import('./bilbao/bilbao.module').then( m => m.BILBAOPageModule)
   },
+  {
+    path: 'foto',
+    loadChildren: () => import('./foto/foto.module').then( m => m.FotoPageModule)
+  },
 ];
 
 @NgModule({
