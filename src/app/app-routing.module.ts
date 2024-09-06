@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'bilbao',
+    redirectTo: 'inicio-sesion',
     pathMatch: 'full'
   },
   {
@@ -26,6 +26,11 @@ const routes: Routes = [
   {
     path: 'foto',
     loadChildren: () => import('./foto/foto.module').then( m => m.FotoPageModule)
+  },
+ 
+  {
+    path: 'inicio-sesion',
+    loadChildren: () => import('./inicio-sesion/inicio-sesion.module').then( m => m.InicioSesionPageModule)
   },
 ];
 
