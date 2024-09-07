@@ -6,3 +6,6 @@
     justify-content: center;
     row-gap: 6px;
 }
+.ion-valid.sc-ion-input-md-h {
+    --highlight-color: var(--highlight-color-valid);
+}
