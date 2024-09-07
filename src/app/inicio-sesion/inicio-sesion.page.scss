@@ -1,11 +1,61 @@
-#contenedor{
-    min-height: 80vh;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    row-gap: 6px;
+#contenedor {
+  /* Necesario para posicionar el botón del ojo cerca del input */
+  background-color: var(
+    --fondo
+  ); //este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  min-height: 100vh;
+  ion-icon {
+    font-size: 2.2rem;
+    color: var(--icono);
+  }
+  
 }
-.ion-valid.sc-ion-input-md-h {
-    --highlight-color: var(--highlight-color-valid);
+#tema-claro {
+  color: var(--icono-tema);
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 1.5rem;
+}
+
+ion-input {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px 0;
+  background-color: var(--fondo-input);
+}
+
+.contenedor-input {
+  
+  width: 100%;
+  max-width: 400px;
+  position: relative; /* Posiciona el botón del ojo cerca del input */
+}
+
+.ojo {
+  position: absolute;
+  left: 400px; /* Alinea el botón a la derecha del campo de contraseña */
+  top: 50%; /* Centra el botón verticalmente con el campo de contraseña */
+  transform: translateY(-50%); /* Asegura el centrado vertical */
+}
+
+ion-button[type="submit"] {
+  margin-top: 20px;
+  background-color: var(--fondo-button);
+}
+.seccion {
+  background-color: rgb(19, 50, 116);
+  border-radius: 10px;
+  padding: 20px; /* Añadir espacio interno */
+  width: 100%;
+  max-width: 500px; /* Aumentar el tamaño de la sección */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Añadir una sombra suave para mejorar la apariencia */
+}
+#contenedor,h1,p{
+    transition: background-color .5s ease,color .5s ease ;
 }

@@ -61,9 +61,11 @@ export class InicioSesionPage implements OnInit {
     if (this.icono == 'oscuro') {
       document.documentElement.style.setProperty('--fondo', '#fff1122');
       document.documentElement.style.setProperty(' --fondo-input', '#1f3d59');
+      document.documentElement.style.setProperty(' --fondo-input', '#1f3d59');
       this.icono = 'claro';
     } else {
       document.documentElement.style.setProperty('--fondo', '#d7d7d7');
+      document.documentElement.style.setProperty(' --fondo-input', '#1f3d59');
       document.documentElement.style.setProperty(' --fondo-input', '#1f3d59');
       this.icono = 'oscuro';
     }
