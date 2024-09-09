@@ -24,15 +24,15 @@ export class InicioSesionPage implements OnInit {
       this.usuario.trim() !== '' &&
       this.clave.trim() !== ''
     ) {
-      if (this.clave.length !== 8) {
+      if (this.clave.length < 8) {
         this.alerta('La contraseña debe tener minimo 8 caracteres', () => {
           console.log('Error en la validación');
         });
       } else {
-        this.router.navigate(['bilbao']); // Cambia '/pagina-destino' por la ruta de destino
+        this.router.navigate(['home']);
       }
     } else {
-      // Mostrar alerta si no se cumplen las condiciones
+     
       this.alerta(
         'Por favor, ingresa un correo válido y completa todos los campos',
         () => {
