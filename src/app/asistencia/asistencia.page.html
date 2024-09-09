@@ -1,0 +1,28 @@
+<ion-content>
+  <div class="containerLogo">
+    <img src="assets/Logo.svg" alt="Logo" class="logo">
+  </div>
+
+  <ion-title>Asistencia Duoc</ion-title>
+
+  <div class="generadorAsistencia">
+    <span>Generador de asistencia</span>
+    <ion-button fill="solid" size="small">Generar QR</ion-button>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let item of items; let i = index">
+      <div class="itemContainer">
+        <div class="itemHeader">
+          <span>{{ item }}</span>
+          <ion-button fill="clear" (click)="toggleInfo(i)">
+            <ion-icon [name]="showInfo[i] ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+          </ion-button>
+        </div>
+        <ion-item-divider *ngIf="showInfo[i]">Asistencia: 100%</ion-item-divider>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+

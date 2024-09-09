@@ -32,6 +32,12 @@ const routes: Routes = [
     path: 'inicio-sesion',
     loadChildren: () => import('./inicio-sesion/inicio-sesion.module').then( m => m.InicioSesionPageModule)
   },
+  {
+    path: 'asistencia',
+    loadChildren: () => import('./asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
+  },
+  { path: 'lista', loadChildren: () => import('./asistencia/asistencia.module').then(m => m.AsistenciaPageModule) }
+
 ];
 
 @NgModule({
