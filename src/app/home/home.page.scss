@@ -1,3 +1,63 @@
+#tema-claro{
+  color: var(--icono-tema);
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 1.5rem;
+}
+.fondo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--fondo-borde);
+}
+
+.contenedor{
+  background-color: var(--fondo);//este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  min-height: 100vh;
+  width: 80%;
+  height: 80% ;
+ ion-icon{
+      font-size: 5.5rem;
+      color: var(--textos);
+  }
+  ion-button{
+    width: 90%;
+    height: 2.5rem;
+    border: none;
+    outline: none;
+    border-radius: 1.25rem;
+    text-align: center;
+    font-size: 1.1rem;
+    --color:black;
+    --background: #f0cc00;
+  }
+  button, input{
+      width: 90%;
+      height: 2.5rem;
+      border: none;
+      outline: none;
+      border-radius: 1.25rem;
+      text-align: center;
+      font-size: 1.1rem;
+  }
+  input{
+      
+      background-color: var(--fondo-input);
+  }
+  button{
+      background-color: var(--fondo-button);
+  }
+  h1,p{
+      color:var(--textos)
+  }
+}
 #container {
   text-align: center;
 
@@ -24,4 +84,12 @@
 
 #container a {
   text-decoration: none;
+}
+//transisiones
+
+.fondo{
+  transition: background-color 1s ease,color 1s ease ;
+}
+.contenedor,h1,p,ion-icon{
+  transition: background-color .5s ease,color .5s ease ;
 }

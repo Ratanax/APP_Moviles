@@ -1,13 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+
+ <!-- <ion-toolbar>
     <ion-title>
       Blank
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
+
 
 <ion-content [fullscreen]="true">
-  <ion-button size="small" color="danger" (click)="presentAlert()">
+  <ion-icon src="/assets/{{icono}}.svg" id="tema-claro" (click)="cambiarTema()"></ion-icon>
+  <div class="fondo">
+    <div class="contenedor">
+    <ion-icon src="/assets/Logo.svg" id="logo">src</ion-icon>
+    <h1>RegistrAPP</h1>
+    <ion-button expand="block" href="inicio-sesion" >Iniciar sesion</ion-button>
+    <ion-button expand="block" (click)="presentAlert()" >Acerca de la App</ion-button>
+    </div>
+  </div>
+
+  
+ <!-- <ion-button size="small" color="danger" (click)="presentAlert()">
     aceptar
     <ion-icon slot="" name="heart"></ion-icon>
 
@@ -18,4 +30,4 @@
     position="bottom" positionAnchor="footer"></ion-toast>
    
     
-</ion-content>
+</ion-content> -->
