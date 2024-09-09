@@ -4,12 +4,13 @@
 
   <div id="contenedor">
     <div class="seccion">
-      <ion-input [(ngModel)]="usuario" label="Usuario" labelPlacement="floating" fill="outline" [counter]="true"
-        maxlength="20" [clearInput]="true"> </ion-input>
+      <ion-input [(ngModel)]="usuario" label="Usuario:" labelPlacement="floating" fill="outline" maxlength="25"
+        [counter]="true" ></ion-input>
+
 
       <div class="contenedor-input">
         <ion-input [(ngModel)]="clave" label="contraseña" type="{{sw?'text':'password'}}" labelPlacement="floating"
-          fill="outline" [clearInput]="true"></ion-input>
+          fill="outline" ></ion-input>
 
         <ion-button class="ojo" fill="clear" (click)="sw=!sw">
           <ion-icon slot="icon-only" name="{{sw ? 'eye-off' : 'eye'}}"></ion-icon>

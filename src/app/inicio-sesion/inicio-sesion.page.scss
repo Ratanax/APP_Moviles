@@ -2,7 +2,8 @@
   /* Necesario para posicionar el botón del ojo cerca del input */
   background-color: var(
     --fondo
-  ); //este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
+  ); 
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
