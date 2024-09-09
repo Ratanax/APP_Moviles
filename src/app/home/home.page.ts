@@ -51,14 +51,14 @@ export class HomePage {
     this.anim
       .create()
       .addElement(document.querySelector('#logo')!)
-      .duration(300)
+      .duration(500)
       .iterations(Infinity)
       .direction('alternate')
       .easing('ease-in-out')
       .keyframes([
-        { offset: 0, transform: 'scale(1) rotate(15deg)' },
+        { offset: 0, transform: 'scale(1) rotate(8deg) translateX(10px)' },
         { offset: 0.5, transform: 'scale(1) rotate(0deg)' },
-        { offset: 1, transform: 'scale(1) rotate(-15deg) ' },
+        { offset: 1, transform: 'scale(1) rotate(-8deg) translateX(-10px) ' },
       ])
       .play();
       
