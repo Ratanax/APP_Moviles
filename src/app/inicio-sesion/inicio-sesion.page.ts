@@ -100,12 +100,19 @@ export class InicioSesionPage implements OnInit {
   // Función para cambiar el tema
   cambiarTema() {
     if (this.icono == 'oscuro') {
-      document.documentElement.style.setProperty('--fondo', '#fff1122');
-      document.documentElement.style.setProperty('--fondo-input', '#1f3d59');
+      document.documentElement.style.setProperty('--fondo', '#2e2d2d');
+      document.documentElement.style.setProperty('--fondo-input', '#2e2d2d');
+      document.documentElement.style.setProperty('--icono-tema', '#f0cc00');
+      document.documentElement.style.setProperty('--seccion', '#1f1f1f');
+      document.documentElement.style.setProperty('--texto-input', 'white');
+
       this.icono = 'claro';
     } else {
-      document.documentElement.style.setProperty('--fondo', '#d7d7d7');
-      document.documentElement.style.setProperty('--fondo-input', '#1f3d59');
+      document.documentElement.style.setProperty('--fondo', '#e8e6e6');
+      document.documentElement.style.setProperty('--fondo-input', '#e8e6e6');
+      document.documentElement.style.setProperty('--icono-tema', '#8c8c8c');
+      document.documentElement.style.setProperty('--seccion', '#cfcfcf');
+      document.documentElement.style.setProperty('--texto-input', 'black');
       this.icono = 'oscuro';
     }
   }

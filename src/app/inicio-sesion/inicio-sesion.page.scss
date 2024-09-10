@@ -1,8 +1,6 @@
 #contenedor {
   /* Necesario para posicionar el botón del ojo cerca del input */
-  background-color: var(
-    --fondo
-  ); 
+  background-color: var(--fondo); 
   
   display: flex;
   flex-direction: column;
@@ -16,7 +14,7 @@
   }
   
 }
-#tema-claro {
+#tema-claro{
   color: var(--icono-tema);
   position: absolute;
   right: 20px;
@@ -29,6 +27,7 @@ ion-input {
   max-width: 400px;
   margin: 10px 0;
   background-color: var(--fondo-input);
+  color: var(--texto-input);
 }
 
 .contenedor-input {
@@ -36,6 +35,7 @@ ion-input {
   width: 100%;
   max-width: 400px;
   position: relative; /* Posiciona el botón del ojo cerca del input */
+  
 }
 
 .ojo {
@@ -43,6 +43,16 @@ ion-input {
   left: 400px; /* Alinea el botón a la derecha del campo de contraseña */
   top: 50%; /* Centra el botón verticalmente con el campo de contraseña */
   transform: translateY(-50%); /* Asegura el centrado vertical */
+  ion-icon{
+    color:var(--texto-input)!important;
+  }
+}
+
+.iniciar{
+  ion-button{
+    color:black;
+    background: #f0cc00;
+  }
 }
 
 ion-button[type="submit"] {
@@ -50,7 +60,7 @@ ion-button[type="submit"] {
   background-color: var(--fondo-button);
 }
 .seccion {
-  background-color: rgb(19, 50, 116);
+  background-color: var(--seccion);
   border-radius: 10px;
   padding: 20px; /* Añadir espacio interno */
   width: 100%;
