@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController  } from '@ionic/angular';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
 @Component({
@@ -13,14 +13,16 @@ export class InicioSesionPage implements OnInit {
   usuario: string = '';
   clave: string = '';
   sw: boolean = false;
-
+  cargando = false; 
   constructor(
     private alert: AlertController,
     private router: Router,
-    private anim: AnimationController
+    private anim: AnimationController,
+    private loadingController: LoadingController,
   ) {}
 
   // Función para animar los errores
+
   animarError(index: number) {
     const inputElement = document.querySelectorAll('ion-input')[index];
 
@@ -70,33 +72,46 @@ export class InicioSesionPage implements OnInit {
   }
 
   // Función de inicio de sesión
-  login() {
+  async login() {
+    // Validar el campo de usuario
     if (this.usuario.trim() === '' || !this.usuario.includes('@')) {
-      // Animar el campo de usuario si está vacío o el correo no es válido
       this.animarError(0);
-      this.alerta(
-        'Por favor, ingresa un correo válido y completa todos los campos',
-        () => {
-          console.log('Error en la validación');
-        }
-      );
+      this.alerta('Por favor, ingresa un correo válido y completa todos los campos', () => {
+        console.log('Error en la validación');
+      });
     } else if (this.clave.trim() === '') {
-      // Animar el campo de clave si está vacío
+      // Validar el campo de contraseña
       this.animarError(1);
       this.alerta('Por favor, ingresa una contraseña', () => {
         console.log('Error en la validación');
       });
     } else if (this.clave.length < 8) {
-      // Animar el campo de clave si es menor a 8 caracteres
+      // Validar la longitud de la contraseña
       this.animarError(1);
       this.alerta('La contraseña debe tener mínimo 8 caracteres', () => {
         console.log('Error en la validación');
       });
     } else {
-      // Si pasa todas las validaciones, redirigir a la página de inicio
-      this.router.navigate(['home']);
+      // Mostrar la animación de carga
+      const loading = await this.loadingController.create({
+        message: 'Iniciando sesión...',
+        spinner: 'circles',
+        duration: 2000, // La duración del spinner en ms
+      });
+  
+      await loading.present(); // Mostrar el loading
+  
+      // Simular proceso de autenticación
+      setTimeout(() => {
+        // Cerrar el loading cuando termine la carga
+        loading.dismiss();
+  
+        // Redirigir a la página de asistencia
+        this.router.navigate(['asistencia']);
+      }, 2000); // El tiempo debe coincidir con el del ion-loading
     }
   }
+  
 
   // Función que muestra una alerta
   alerta(texto: string, accion: () => void) {

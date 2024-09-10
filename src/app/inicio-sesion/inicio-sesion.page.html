@@ -21,6 +21,10 @@
       <ion-button class="iniciar" expand="block" (click)="login()" color="warning">Iniciar sesión</ion-button>
 
     </div>
-
   </div>
+  <ion-loading
+  [isOpen]="cargando"
+  message="Iniciando sesión..."
+  spinner="circles">
+</ion-loading>
 </ion-content>
