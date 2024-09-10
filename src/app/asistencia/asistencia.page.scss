@@ -1,8 +1,18 @@
+:root {
+  --fondo: #e8e6e6; 
+  --fondo-input: #e8e6e6;
+  --icono-tema: #8c8c8c;
+  --seccion: #cfcfcf;
+  --texto-input: black;
+  --ion-color-success: black;
+}
+
 ion-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--fondo);
 }
 
 .containerLogo {
@@ -51,4 +61,12 @@ ion-list {
 
 ion-item {
   text-align: center; 
+}
+
+#tema-claro{
+  color: var(--icono-tema);
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 1.5rem;
 }
