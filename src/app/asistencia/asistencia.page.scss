@@ -1,11 +1,12 @@
-:root {
-  --fondo: #e8e6e6; 
-  --fondo-input: #e8e6e6;
-  --icono-tema: #8c8c8c;
-  --seccion: #cfcfcf;
-  --texto-input: black;
-  --ion-color-success: black;
-}
+//:root {
+//  --fondo: #e8e6e6; 
+//  --fondo-input: #e8e6e6;
+//  --icono-tema: #8c8c8c;
+//  --seccion: #cfcfcf;
+//  --texto-input: black;
+//  --ion-color-success: black;
+//}
+
 
 ion-content {
   display: flex;
@@ -14,10 +15,40 @@ ion-content {
   align-items: center;
   background-color: var(--fondo);
 }
+.fondo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--fondo-borde);
+}
+
+.contenedor{
+    background-color: var(--fondo);//este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  min-height: 100vh;
+  width: 80%;
+  height: 80% ;
+  h1{
+    color:var(--texto-input);
+  }
+  ion-icon{
+    font-size: 2.5rem;
+
+  }
+}
 
 .containerLogo {
   text-align: center;
   margin: 20px;
+  ion-icon{
+    font-size: 5.5rem;
+    color: var(--texto-input);
+  }
 }
 
 .logo {
@@ -37,26 +68,28 @@ ion-title {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border: 1px solid #ccc; 
+  border: 2px solid #FFC409; 
   border-radius: 8px;
-  margin: 0 auto 20px auto; 
-  background-color: #f9f9f9; 
-}
-
-ion-list {
-  width: 90%;
-  max-width: 500px;
-  margin: 0 auto; 
+  margin: 0 auto 20px auto;
+  background-color: var(--item-bg);
+  color: var(--texto-input);
+  
 }
 
 .itemContainer {
   width: 100%;
+  //background-color: blue; color fondo
+  color:var(--texto-input);
+
 }
 
 .itemHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ion-item-divider{
+   background-color:  var(--color-list);
+  }
 }
 
 ion-item {
@@ -69,4 +102,33 @@ ion-item {
   right: 20px;
   top: 20px;
   font-size: 1.5rem;
+}
+
+ion-list {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto; 
+  background-color: var(--item-bg);
+}
+
+.item-background-color{
+  --ion-item-background:var(--item-bg);
+}
+//transisiones
+
+.fondo{
+  transition: background-color 1s ease,color 1s ease ;
+}
+.contenedor,h1,p,ion-icon{
+  transition: background-color .5s ease,color .5s ease ;
+}
+
+.itemContainer, .itemHeader, .item-background-color,ion-list, .generadorAsistencia{
+  transition: background-color .5s ease,color .5s ease ;
+  transition: --ion-item-background .5s ease,color .5s ease ;
+  transition: color .5s ease,color .5s ease ;
+  
+  ion-item-divider{
+  transition: background-color .5s ease,color .5s ease ;
+  }
 }

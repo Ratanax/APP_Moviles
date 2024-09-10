@@ -36,6 +36,9 @@ export class AsistenciaPage implements OnInit {
       document.documentElement.style.setProperty('--seccion', '#1f1f1f');
       document.documentElement.style.setProperty('--texto-input', 'white');
       document.documentElement.style.setProperty('--ion-color-success', 'white');
+      document.documentElement.style.setProperty('--fondo-borde', '#1f1f1f');
+      document.documentElement.style.setProperty('--color-list', '#1f1f1f');
+      document.documentElement.style.setProperty('--item-bg', '#1f1f1f');
 
       this.icono = 'claro';
     } else {
@@ -45,6 +48,9 @@ export class AsistenciaPage implements OnInit {
       document.documentElement.style.setProperty('--seccion', '#cfcfcf');
       document.documentElement.style.setProperty('--texto-input', 'black');
       document.documentElement.style.setProperty('--ion-color-success', 'black');
+      document.documentElement.style.setProperty('--fondo-borde', '#cfcfcf');
+      document.documentElement.style.setProperty('--color-list', '#cfcfcf');
+      document.documentElement.style.setProperty('--item-bg', 'white');
       this.icono = 'oscuro';
     }
   }
