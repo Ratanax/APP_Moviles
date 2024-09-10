@@ -105,6 +105,7 @@ export class InicioSesionPage implements OnInit {
       document.documentElement.style.setProperty('--icono-tema', '#f0cc00');
       document.documentElement.style.setProperty('--seccion', '#1f1f1f');
       document.documentElement.style.setProperty('--texto-input', 'white');
+      document.documentElement.style.setProperty('--ion-color-success', 'white');
 
       this.icono = 'claro';
     } else {
@@ -113,6 +114,7 @@ export class InicioSesionPage implements OnInit {
       document.documentElement.style.setProperty('--icono-tema', '#8c8c8c');
       document.documentElement.style.setProperty('--seccion', '#cfcfcf');
       document.documentElement.style.setProperty('--texto-input', 'black');
+      document.documentElement.style.setProperty('--ion-color-success', 'black');
       this.icono = 'oscuro';
     }
   }
