@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-asistencia',
@@ -10,7 +11,7 @@ export class AsistenciaPage implements OnInit {
   items: string[];
   showInfo: boolean[];
 
-  constructor() { 
+  constructor(private anim: AnimationController) {  
     this.items = [];
     this.showInfo = [];
   }
@@ -21,8 +22,26 @@ export class AsistenciaPage implements OnInit {
 
     
     this.showInfo = new Array(this.items.length).fill(false);
+    this.animarPag();
   }
 
+  animarPag() {
+    this.anim
+      .create()
+      .addElement(document.querySelector('#contenedor')!)
+      .duration(2000)
+      .iterations(1)
+
+      .easing('ease-out')
+
+      .keyframes([
+        { offset: 0, transform: 'scale(1) translateY(300px)', opacity: '0' },
+        { offset: 0.5, transform: 'scale(1) translateY(150px)', opacity: '0.1' },
+        { offset: 1, transform: 'scale(1) translateY(0px)', opacity: '1' },
+      ])
+      .play();
+      
+  }
   toggleInfo(index: number) {
     
     this.showInfo[index] = !this.showInfo[index];
