@@ -132,7 +132,6 @@ export class InicioSesionPage implements OnInit {
       document.documentElement.style.setProperty('--seccion', '#cfcfcf');
       document.documentElement.style.setProperty('--texto-input', 'black');
       document.documentElement.style.setProperty('--ion-color-success', 'black');
-      document.documentElement.style.setProperty('--ion-color-success', 'black');
       this.icono = 'oscuro';
     }
   }
