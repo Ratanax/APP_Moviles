@@ -36,7 +36,11 @@ const routes: Routes = [
     path: 'asistencia',
     loadChildren: () => import('./asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
   },
-  { path: 'lista', loadChildren: () => import('./asistencia/asistencia.module').then(m => m.AsistenciaPageModule) }
+  { path: 'lista', loadChildren: () => import('./asistencia/asistencia.module').then(m => m.AsistenciaPageModule) },  {
+    path: 'fondo-qr',
+    loadChildren: () => import('./fondo-qr/fondo-qr.module').then( m => m.FondoQRPageModule)
+  }
+
 
 ];
 

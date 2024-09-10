@@ -1,0 +1,13 @@
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; // Ocupa todo el alto del ion-content
+  }
+  
+  img {
+    max-width: 100%;
+    height: 100%; // Se adapta al contenedor sin distorsionarse
+    object-fit: cover; // Opcional: para que la imagen se ajuste sin perder proporción
+  }
+  
