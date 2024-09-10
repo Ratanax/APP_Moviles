@@ -72,3 +72,6 @@ ion-button[type="submit"] {
 #contenedor,h1,p{
     transition: background-color .5s ease,color .5s ease ;
 }
+.ion-valid.sc-ion-input-md-h {
+  --highlight-color: var(--ion-color-success:);
+}
