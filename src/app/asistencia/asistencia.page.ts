@@ -32,10 +32,12 @@ export class AsistenciaPage implements OnInit {
       .duration(2000)
       .iterations(1)
 
+      .easing('ease-out')
+
       .keyframes([
-        { offset: 0, transform: 'scale(1)', opacity: '0' },
-        { offset: 0.5, transform: 'scale(1)', opacity: '0.1' },
-        { offset: 1, transform: 'scale(1)', opacity: '1' },
+        { offset: 0, transform: 'scale(1) translateY(300px)', opacity: '0' },
+        { offset: 0.5, transform: 'scale(1) translateY(150px)', opacity: '0.1' },
+        { offset: 1, transform: 'scale(1) translateY(0px)', opacity: '1' },
       ])
       .play();
       
