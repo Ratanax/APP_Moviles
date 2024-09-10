@@ -1,8 +1,9 @@
 <ion-content [fullscreen]="true">
-
   <ion-icon src="/assets/{{icono}}.svg" id="tema-claro" (click)="cambiarTema()"></ion-icon>
 
+
   <div id="contenedor">
+
     <div class="seccion">
       <ion-input [(ngModel)]="usuario" label="Usuario:" labelPlacement="floating" fill="outline" maxlength="25"
         [counter]="true" ></ion-input>
@@ -10,14 +11,14 @@
 
       <div class="contenedor-input">
         <ion-input [(ngModel)]="clave" label="contraseña" type="{{sw?'text':'password'}}" labelPlacement="floating"
-          fill="outline" color="warning" ></ion-input>
+          fill="outline"></ion-input>
 
         <ion-button class="ojo" fill="clear" (click)="sw=!sw">
           <ion-icon slot="icon-only" id="ojito" name="{{sw ? 'eye-off' : 'eye'}}"></ion-icon>
         </ion-button>
       </div>
 
-      <ion-button class="iniciar" expand="block" (click)="login()">Iniciar sesión</ion-button>
+      <ion-button class="iniciar" expand="block" (click)="login()" color="warning">Iniciar sesión</ion-button>
 
     </div>
 

@@ -51,6 +51,23 @@ export class InicioSesionPage implements OnInit {
       ]) 
       .play() 
   }
+  
+  animarLogo() {
+    this.anim
+      .create()
+      .addElement(document.querySelector('#logo')!)
+      .duration(500)
+      .iterations(Infinity)
+      .direction('alternate')
+      .easing('ease-in-out')
+      .keyframes([
+        { offset: 0, transform: 'scale(1) rotate(8deg) translateX(10px)' },
+        { offset: 0.5, transform: 'scale(1) rotate(0deg)' },
+        { offset: 1, transform: 'scale(1) rotate(-8deg) translateX(-10px) ' },
+      ])
+      .play();
+      
+  }
 
   // Función de inicio de sesión
   login() {
@@ -105,6 +122,7 @@ export class InicioSesionPage implements OnInit {
       document.documentElement.style.setProperty('--icono-tema', '#f0cc00');
       document.documentElement.style.setProperty('--seccion', '#1f1f1f');
       document.documentElement.style.setProperty('--texto-input', 'white');
+      document.documentElement.style.setProperty('--ion-color-success', '#f0cc00');
 
       this.icono = 'claro';
     } else {
@@ -113,6 +131,7 @@ export class InicioSesionPage implements OnInit {
       document.documentElement.style.setProperty('--icono-tema', '#8c8c8c');
       document.documentElement.style.setProperty('--seccion', '#cfcfcf');
       document.documentElement.style.setProperty('--texto-input', 'black');
+      document.documentElement.style.setProperty('--ion-color-success', 'black');
       this.icono = 'oscuro';
     }
   }
