@@ -1,21 +1,25 @@
 #contenedor {
-  /* Necesario para posicionar el botón del ojo cerca del input */
-  background-color: var(--fondo); 
-  
+  background-color: var(--fondo);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   row-gap: 15px;
   min-height: 100vh;
-  ion-icon {
-    font-size: 2.2rem;
-    color: var(--icono);
-  }
-  
+  width: 80%;
+  height: 80%;
 }
 
-
+.fondo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--fondo-borde);
+}
+.fondo{
+  transition: background-color 1s ease,color 1s ease ;
+}
 #tema-claro{
   color: var(--icono-tema);
   position: absolute;
@@ -42,7 +46,7 @@ ion-input {
 
 .ojo {
   position: absolute;
-  left: 400px; /* Alinea el botón a la derecha del campo de contraseña */
+  left: 360px; /* Alinea el botón a la derecha del campo de contraseña */
   top: 50%; /* Centra el botón verticalmente con el campo de contraseña */
   transform: translateY(-50%); /* Asegura el centrado vertical */
   ion-icon{

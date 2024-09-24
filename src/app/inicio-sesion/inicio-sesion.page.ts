@@ -128,28 +128,27 @@ export class InicioSesionPage implements OnInit {
       })
       .then((alert) => alert.present());
   }
-
+  ionViewWillEnter(){
+   this.icono = localStorage.getItem("tema")! == "oscuro" ? "claro" : "oscuro"
+   this.cambiarTema()
+  }
   // Función para cambiar el tema
   cambiarTema() {
-    if (this.icono == 'oscuro') {
-      document.documentElement.style.setProperty('--fondo', '#2e2d2d');
-      document.documentElement.style.setProperty('--fondo-input', '#2e2d2d');
-      document.documentElement.style.setProperty('--icono-tema', '#f0cc00');
-      document.documentElement.style.setProperty('--seccion', '#1f1f1f');
-      document.documentElement.style.setProperty('--texto-input', 'white');
-      document.documentElement.style.setProperty('--ion-color-success', 'white');
-
-      this.icono = 'claro';
-    } else {
-      document.documentElement.style.setProperty('--fondo', '#e8e6e6');
-      document.documentElement.style.setProperty('--fondo-input', '#e8e6e6');
-      document.documentElement.style.setProperty('--icono-tema', '#8c8c8c');
-      document.documentElement.style.setProperty('--seccion', '#cfcfcf');
-      document.documentElement.style.setProperty('--texto-input', 'black');
-      document.documentElement.style.setProperty('--ion-color-success', 'black');
-      this.icono = 'oscuro';
+  
+    document.documentElement.style.setProperty('--fondo',this.icono=="oscuro"?  '#2e2d2d' : '#e8e6e6');
+    document.documentElement.style.setProperty('--fondo-input',this.icono=="oscuro"?  '#2e2d2d' : '#e8e6e6');
+    document.documentElement.style.setProperty('--icono-tema',this.icono=="oscuro"?  '#f0cc00' :  '#8c8c8c');
+    document.documentElement.style.setProperty('--seccion',this.icono=="oscuro"?  '#1f1f1f' : '#cfcfcf');
+    document.documentElement.style.setProperty('--texto-input',this.icono=="oscuro"?  'white' : 'black');
+        document.documentElement.style.setProperty('--fondo-borde',this.icono=="oscuro"?  '#1f1f1f' : '#cfcfcf');
+    document.documentElement.style.setProperty('--ion-color-success',this.icono=="oscuro"?  'white' : 'black');
+  
+    
+    this.icono = this.icono =="oscuro" ? "claro" : "oscuro"
+    localStorage.setItem('tema', this.icono);
+  
     }
-  }
+  
 
   ngOnInit() {}
 }
