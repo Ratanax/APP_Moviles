@@ -21,10 +21,29 @@
         </div>
 
         <ion-button class="iniciar" expand="block" (click)="login()" color="warning">Iniciar sesión</ion-button>
-
+        <ion-button expand="block" (click)="setOpen(true)">Recuperar contraseña</ion-button>
       </div>
     </div>
     <ion-loading [isOpen]="cargando" message="Iniciando sesión..." spinner="circles">
     </ion-loading>
   </div>
 </ion-content>
+
+<ion-modal [isOpen]="isModalOpen">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Recuperar contraseña</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div class="contenedor-modal">
+        <input type="email" placeholder="usuario@gmail.com" [(ngModel)]="usuario">
+        <button (click)="resetPass()">Recuperar</button>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>
