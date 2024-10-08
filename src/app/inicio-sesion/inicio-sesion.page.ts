@@ -70,7 +70,7 @@ export class InicioSesionPage implements OnInit {
       .play();
       
   }
-
+  
   // Función de inicio de sesión
   async login() {
     // Validar el campo de usuario
@@ -140,10 +140,8 @@ export class InicioSesionPage implements OnInit {
     document.documentElement.style.setProperty('--icono-tema',this.icono=="oscuro"?  '#f0cc00' :  '#8c8c8c');
     document.documentElement.style.setProperty('--seccion',this.icono=="oscuro"?  '#1f1f1f' : '#cfcfcf');
     document.documentElement.style.setProperty('--texto-input',this.icono=="oscuro"?  'white' : 'black');
-        document.documentElement.style.setProperty('--fondo-borde',this.icono=="oscuro"?  '#1f1f1f' : '#cfcfcf');
+    document.documentElement.style.setProperty('--fondo-borde',this.icono=="oscuro"?  '#1f1f1f' : '#cfcfcf');
     document.documentElement.style.setProperty('--ion-color-success',this.icono=="oscuro"?  'white' : 'black');
-  
-    
     this.icono = this.icono =="oscuro" ? "claro" : "oscuro"
     localStorage.setItem('tema', this.icono);
   

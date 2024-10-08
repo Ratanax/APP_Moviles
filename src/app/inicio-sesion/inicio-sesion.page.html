@@ -5,23 +5,17 @@
     <div id="contenedor">
 
       <div class="seccion">
-        <ion-input [(ngModel)]="usuario" label="Usuario:" labelPlacement="floating" fill="outline" maxlength="25"
-          ></ion-input>
+        <ion-input [(ngModel)]="usuario" label="Usuario:" labelPlacement="floating" fill="outline"
+          maxlength="25">
 
-
-        <div class="contenedor-input">
-         
-          <ion-input [(ngModel)]="clave" label="contraseña:" type="{{sw?'text':'password'}}" labelPlacement="floating"
-          fill="outline" color="warning">
-          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
         </ion-input>
+        <div class="contenedor-input">
 
-         
-        
+          <ion-input [(ngModel)]="clave" label="contraseña:" type="{{sw?'text':'password'}}" labelPlacement="floating"
+            fill="outline" color="warning"> <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
         </div>
-
         <ion-button class="iniciar" expand="block" (click)="login()" color="warning">Iniciar sesión</ion-button>
-
       </div>
     </div>
     <ion-loading [isOpen]="cargando" message="Iniciando sesión..." spinner="circles">
