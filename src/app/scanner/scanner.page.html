@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>scanner</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="contenedor">
+    <div class="scanner">
+      {{contenido}}
+    </div>
+    <div class="botones">
+        <button>
+          <ion-button name="play" (click)="scan()"></ion-button>
+        </button>
+        <button>
+          <ion-button name="stop" (click)="stop()"></ion-button>
+        </button>
+    </div>
+  </div>
+</ion-content>
