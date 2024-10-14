@@ -79,3 +79,15 @@ ion-button[type="submit"] {
 .ion-valid.sc-ion-input-md-h {
   --highlight-color: var(--ion-color-success:);
 }
+
+/*               Modal              */
+
+.contenedor-modal{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+  row-gap: 20vh;
+  
+}

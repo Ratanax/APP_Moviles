@@ -45,9 +45,11 @@ ion-content {
 .containerLogo {
   text-align: center;
   margin: 20px;
+  z-index: 1;
   ion-icon{
     font-size: 5.5rem;
     color: var(--texto-input);
+    
   }
 }
 

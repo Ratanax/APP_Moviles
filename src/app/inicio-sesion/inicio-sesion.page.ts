@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController  } from '@ionic/angular';
@@ -9,18 +10,48 @@ import { AnimationController, IonCard } from '@ionic/angular';
   styleUrls: ['./inicio-sesion.page.scss'],
 })
 export class InicioSesionPage implements OnInit {
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
   icono = 'oscuro';
-  usuario: string = '';
-  clave: string = '';
+  
+  usuarios = [{usuario:"juan@juan.cl", clave:"juan123123", },
+              {usuario:"dav.walker@duocuc.cl", clave:"123123123"}
+  ]
+  usuario =""
+  clave =""
+  
   sw: boolean = false;
   cargando = false; 
   constructor(
+    private http:HttpClient,
     private alert: AlertController,
     private router: Router,
     private anim: AnimationController,
     private loadingController: LoadingController,
   ) {}
-
+resetPass(){
+  for(let u of this.usuarios){
+    if(u.usuario == this.usuario){
+      let nueva = Math.random().toString(36).slice(-6)
+      u.clave = nueva
+      let body = {
+        "usuario": u.usuario,
+        "app": "registrAPP",
+        "clave":nueva,
+        "email":u.usuario
+      }
+      this.http.post("https://myths.cl/api/reset_password.php", body)
+      .subscribe((data)=>{
+        console.log(data)
+      })
+      return;
+    }
+  }
+  
+}
   // Función para animar los errores
 
   animarError(index: number) {
@@ -73,43 +104,16 @@ export class InicioSesionPage implements OnInit {
   
   // Función de inicio de sesión
   async login() {
-    // Validar el campo de usuario
-    if (this.usuario.trim() === '' || !this.usuario.includes('@')) {
-      this.animarError(0);
-      this.alerta('Por favor, ingresa un correo válido y completa todos los campos', () => {
-        console.log('Error en la validación');
-      });
-    } else if (this.clave.trim() === '') {
-      // Validar el campo de contraseña
-      this.animarError(1);
-      this.alerta('Por favor, ingresa una contraseña', () => {
-        console.log('Error en la validación');
-      });
-    } else if (this.clave.length < 8) {
-      // Validar la longitud de la contraseña
-      this.animarError(1);
-      this.alerta('La contraseña debe tener mínimo 8 caracteres', () => {
-        console.log('Error en la validación');
-      });
-    } else {
-      // Mostrar la animación de carga
-      const loading = await this.loadingController.create({
-        message: 'Iniciando sesión...',
-        spinner: 'circles',
-        duration: 2000, // La duración del spinner en ms
-      });
-  
-      await loading.present(); // Mostrar el loading
-  
-      // Simular proceso de autenticación
-      setTimeout(() => {
-        // Cerrar el loading cuando termine la carga
-        loading.dismiss();
-  
-        // Redirigir a la página de asistencia
+    for(let u of this.usuarios){
+      if(u.usuario==this.usuario && u.clave == this.clave){
+        console.log(`Has ingresado con ${u.usuario}`)
+         // Redirigir a la página de asistencia
         this.router.navigate(['asistencia']);
-      }, 2000); // El tiempo debe coincidir con el del ion-loading
+        return;
+      }
+      
     }
+    console.log("Datos incorrectos!")
   }
   
 
