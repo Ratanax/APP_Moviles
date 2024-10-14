@@ -39,6 +39,10 @@ const routes: Routes = [
   { path: 'lista', loadChildren: () => import('./asistencia/asistencia.module').then(m => m.AsistenciaPageModule) },  {
     path: 'fondo-qr',
     loadChildren: () => import('./fondo-qr/fondo-qr.module').then( m => m.FondoQRPageModule)
+  },
+  {
+    path: 'scanner',
+    loadChildren: () => import('./scanner/scanner.module').then( m => m.ScannerPageModule)
   }
 
 
