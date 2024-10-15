@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-scanner',
@@ -8,21 +10,29 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 })
 export class ScannerPage implements OnInit {
   contenido = ""
-  constructor() { }
+  constructor(private toast: ToastController) { }
 
   ngOnInit() {
   }
   async scan(){
-    await BarcodeScanner.hideBackground();
-    document.querySelector('body')!.classList.add('scanner-active');
-    const result = await BarcodeScanner.startScan();
-    if(result.hasContent) {
-      this.contenido = result.content
-    }
+    CapacitorBarcodeScanner.scanBarcode(
+      {hint: CapacitorBarcodeScannerTypeHint.ALL}
+    ).then((data)=>{
+      this.showToast(data.ScanResult)
+    })
   }
-  async stop(){
-    document.querySelector('body')!.classList.remove('scanner-active');
-    await BarcodeScanner.showBackground();
-    await BarcodeScanner.stopScan();
+
+
+  async showToast(texto: string) {
+    const toast = await this.toast.create({
+      message: texto,
+      duration: 3000,
+      positionAnchor: 'footer2',
+      cssClass:'rounded-toast'
+    });
+    await toast.present();
   }
+
+
+
 }

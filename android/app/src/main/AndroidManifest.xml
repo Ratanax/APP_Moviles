@@ -38,8 +38,7 @@ xmlns:tools="http://schemas.android.com/tools">
     </application>
 
     <!-- Permissions -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
 
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
