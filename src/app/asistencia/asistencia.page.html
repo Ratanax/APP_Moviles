@@ -1,34 +1,36 @@
 <ion-content>
-  <ion-icon src="/assets/{{icono}}.svg" id="tema-claro" (click)="cambiarTema()"></ion-icon>
   <div class="fondo">
     <div class="contenedor" id="contenedor">
 
       <div class="containerLogo">
         <ion-icon src="/assets/Logo.svg" id="logo">src</ion-icon>
+        <ion-icon src="/assets/{{icono}}.svg" id="tema-claro" (click)="cambiarTema()"></ion-icon>
       </div>
 
-    <h1>Asistencia Duoc</h1>
+      <h1>Asistencia Duoc</h1>
 
-    <div class="generadorAsistencia">
-      <span>Generador de asistencia</span>
-      <ion-button fill="solid" size="small" color="warning" href="fondo-qr" >Leer QR</ion-button>
+      <div class="generadorAsistencia">
+        <span>Generador de asistencia</span>
+        <ion-button fill="solid" size="small" color="warning" href="fondo-qr">Leer QR</ion-button>
+      </div>
+
+      <ion-list>
+        <ion-item *ngFor="let item of items; let i = index" class="item-background-color">
+          <ul class="itemContainer">
+            <li>
+              <span>{{ item }}</span>
+              <ion-button fill="clear" (click)="toggleInfo(i)" color="warning">
+                <ion-icon [name]="showInfo[i] ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+              </ion-button>
+            </li>
+            <ion-item-divider *ngIf="showInfo[i]">Asistencia: 100%</ion-item-divider>
+          </ul>
+        </ion-item>
+      </ion-list>
     </div>
-
-    <ion-list>
-      <ion-item *ngFor="let item of items; let i = index" class="item-background-color">
-        <div class="itemContainer">
-          <div class="itemHeader">
-            <span>{{ item }}</span>
-            <ion-button fill="clear" (click)="toggleInfo(i)" color="warning">
-              <ion-icon [name]="showInfo[i] ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
-            </ion-button>
-          </div>
-          <ion-item-divider *ngIf="showInfo[i]">Asistencia: 100%</ion-item-divider>
-        </div>
-      </ion-item>
-    </ion-list>
   </div>
-</div>   
 </ion-content>
+
+
 
 

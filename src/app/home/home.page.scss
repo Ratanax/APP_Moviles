@@ -1,11 +1,11 @@
-#tema-claro{
-  color: var(--icono-tema);
+#tema-claro {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  top: 20px;   
+  right: 170px; //Ajusta la distancia para colocar el icono más a la derecha o a la izquierda, me rendí con intentar moverlo, por alguna razon solo funciona bien en el asistencia
+  color: var(--icono-tema);
   font-size: 1.5rem;
 }
-.fondo{
+.fondo {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,8 +13,8 @@
   background-color: var(--fondo-borde);
 }
 
-.contenedor{
-  background-color: var(--fondo);//este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
+.contenedor {
+  background-color: var(--fondo);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,77 +22,48 @@
   row-gap: 15px;
   min-height: 100vh;
   width: 80%;
-  height: 80% ;
-  h1{
+  height: 80%;
+
+  h1 {
     font-size: 3rem;
   }
- ion-icon{
-      font-size: 5.5rem;
-      color: var(--textos);
+
+  ion-icon {
+    font-size: 5.5rem;
+    color: var(--textos);
   }
-  ion-button{
-    width: 90%;
+
+  ion-button {
+    width: 75%;
     height: 2.5rem;
     border: none;
     outline: none;
     border-radius: 1.25rem;
     text-align: center;
     font-size: 1.1rem;
-    --color:black;
+    --color: black;
     --background: #f0cc00;
   }
-  button, input{
-      width: 90%;
-      height: 2.5rem;
-      border: none;
-      outline: none;
-      border-radius: 1.25rem;
-      text-align: center;
-      font-size: 1.1rem;
+
+  button, input {
+    width: 75%;
+    height: 2.5rem;
+    border: none;
+    outline: none;
+    border-radius: 1.25rem;
+    text-align: center;
+    font-size: 1.1rem;
   }
-  input{
-      
-      background-color: var(--fondo-input);
+
+  input {
+    background-color: var(--fondo-input);
   }
-  button{
-      background-color: var(--fondo-button);
+
+  button {
+    background-color: var(--fondo-button);
   }
-  h1,p{
-      color:var(--textos)
+
+  h1, p {
+    color: var(--textos);
   }
-}
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-//transisiones
-
-.fondo{
-  transition: background-color 1s ease,color 1s ease ;
-}
-.contenedor,h1,p,ion-icon{
-  transition: background-color .5s ease,color .5s ease ;
 }
