@@ -9,9 +9,10 @@
 
       <h1>Asistencia Duoc</h1>
 
-      <div class="generadorAsistencia">
-        <span>Generador de asistencia</span>
-        <ion-button fill="solid" size="small" color="warning" href="scanner">Leer QR</ion-button>
+      <div class="scanner">
+        <span>Leer QR</span>
+        <ion-button class="botones" size="small" color="warning" (click)="scan()">
+          <ion-icon name="play"></ion-icon></ion-button>
       </div>
 
       <ion-list>
@@ -30,7 +31,3 @@
     </div>
   </div>
 </ion-content>
-
-
-
-

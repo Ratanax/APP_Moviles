@@ -7,6 +7,59 @@
 //  --ion-color-success: black;
 //}
 
+#contenedor{
+  min-height: 100vh;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2vh;
+}
+
+.scanner{
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid #FFC409; 
+  border-radius: 8px;
+  margin: 0 auto 20px auto;
+  background-color: var(--item-bg);
+  color: var(--texto-input);
+  
+
+}
+
+.botones{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+
+button{
+  height: 2rem;
+  width: calc(50% - 5px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ion-content {
   display: flex;
