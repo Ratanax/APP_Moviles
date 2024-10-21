@@ -31,12 +31,38 @@ export class AsistenciaPage implements OnInit {
     this.showInfo = new Array(this.items.length).fill(false);
     this.animarPag();
   }
+
+  
   async scan() {
-    CapacitorBarcodeScanner.scanBarcode({
+    const result = await CapacitorBarcodeScanner.scanBarcode({
       hint: CapacitorBarcodeScannerTypeHint.ALL,
-    }).then((data) => {
-      this.showToast(data.ScanResult);
     });
+  
+    if (result && result.ScanResult) {
+      const qr = result.ScanResult.split("/");
+  
+      // Crear el objeto de asistencia
+      const asistencia = {
+        ramo: qr[0],
+        docente: qr[1],
+        hora: new Date(),
+        'hora inicio': qr[2],
+      };
+  
+      // Obtener las asistencias anteriores almacenadas en localStorage
+      let asistencias = JSON.parse(localStorage.getItem('asistencias') || '[]');
+  
+      // Agregar la nueva asistencia al arreglo
+      asistencias.push(asistencia);
+  
+      // Guardar el arreglo actualizado en localStorage
+      localStorage.setItem('asistencias', JSON.stringify(asistencias));
+  
+      // Mostrar el resultado
+      this.showToast(`Asistencia registrada: ${asistencia.ramo}, ${asistencia.docente}`);
+    } else {
+      this.showToast('No se pudo escanear el código');
+    }
   }
 
   async showToast(texto: string) {
