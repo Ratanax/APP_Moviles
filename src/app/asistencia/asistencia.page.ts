@@ -15,7 +15,9 @@ export class AsistenciaPage implements OnInit {
   showInfo: boolean[] = [];
   asistencias: any[] = [];
   conteoAsistencias: { [key: string]: number } = {};
-  
+  nombreUsuario: string = ''; // Variable para almacenar el nombre del usuario
+
+
   constructor(
     private anim: AnimationController,
     private toast: ToastController,
@@ -27,6 +29,9 @@ export class AsistenciaPage implements OnInit {
     this.showInfo = new Array(this.items.length).fill(false);
     this.animarPag();
     this.animarLogo();
+    this.nombreUsuario = localStorage.getItem('nombreUsuario') || 'gmail'; // Valor por defecto 'Usuario' si no hay nada en localStorage
+  
+    
   }
   animarLogo() {
     this.anim

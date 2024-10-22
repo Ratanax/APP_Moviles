@@ -16,13 +16,25 @@ export class InicioSesionPage implements OnInit {
     this.isModalOpen = isOpen;
   }
 
-  
   icono = 'oscuro';
 
   usuarios = [
-    { usuario: 'juan@juan.cl', clave: 'juan123123' },
-    { usuario: 'dav.walker@duocuc.cl', clave: '123123123' },
-    { usuario: 'hu.romerog@duocuc.cl', clave: '123123123' },
+    { gmail: 'Juan pablo', usuario: 'juan@juan.cl', clave: 'juan123123' },
+    {
+      gmail: 'David walker',
+      usuario: 'dav.walker@duocuc.cl',
+      clave: '123123123',
+    },
+    {
+      gmail: 'Hugo romero',
+      usuario: 'hu.romerog@duocuc.cl',
+      clave: '123123123',
+    },
+    {
+      gmail: 'Lucas padilla',
+      usuario: 'luc.padilla@duocuc.cl',
+      clave: '123123123',
+    },
   ];
   usuario = '';
   clave = '';
@@ -36,6 +48,7 @@ export class InicioSesionPage implements OnInit {
     private anim: AnimationController,
     private loadingController: LoadingController
   ) {}
+
   resetPass() {
     for (let u of this.usuarios) {
       if (u.usuario == this.usuario) {
@@ -69,10 +82,8 @@ export class InicioSesionPage implements OnInit {
     });
 
     await alert.present();
-
   }
 
-  
   animarError2(index: number) {
     const inputElement = document.querySelectorAll('input')[index];
 
@@ -171,7 +182,10 @@ export class InicioSesionPage implements OnInit {
     let usuarioValido = false; // Variable para verificar si el usuario es válido
     for (let u of this.usuarios) {
       if (u.usuario === this.usuario && u.clave === this.clave) {
+        localStorage.setItem('nombreUsuario', u.gmail);
+
         console.log(`Has ingresado con ${u.usuario}`);
+
         // Redirigir a la página de asistencia
         this.router.navigate(['asistencia']);
         usuarioValido = true; // Marcamos que el usuario es válido
