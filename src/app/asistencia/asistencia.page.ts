@@ -74,7 +74,7 @@ export class AsistenciaPage implements OnInit {
       this.contarAsistencias();
 
       // Mostrar el resultado
-      this.showToast(`Asistencia registrada: ${asistencia.ramo}, ${asistencia.docente}`);
+      this.showToast(`Asistencia registrada: ${asistencia.ramo}, Profesor: ${asistencia.docente}`);
     } else {
       this.showToast('No se pudo escanear el código');
     }
@@ -83,7 +83,7 @@ export class AsistenciaPage implements OnInit {
   async showToast(texto: string) {
     const toast = await this.toast.create({
       message: texto,
-      duration: 3000,
+      duration: 7000,
       positionAnchor: 'footer2',
       cssClass: 'rounded-toast',
     });
