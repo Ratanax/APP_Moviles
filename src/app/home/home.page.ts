@@ -65,9 +65,9 @@ export class HomePage {
     this.anim
       .create()
       .addElement(inputElement)
-      .duration(1000) // Duración del parpadeo en milisegundos
-      .iterations(Infinity) // Repetir infinitamente
-      .easing('linear') // Efecto de interpolación lineal
+      .duration(1000)
+      .iterations(Infinity)
+      .easing('linear')
       .keyframes([
         { offset: 0, opacity: 1 }, // Totalmente visible
         { offset: 0.5, opacity: 0.8 }, // Totalmente invisible

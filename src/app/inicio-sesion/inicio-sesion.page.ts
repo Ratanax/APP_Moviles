@@ -195,6 +195,10 @@ export class InicioSesionPage implements OnInit {
       '--ion-color-success',
       this.icono == 'oscuro' ? 'white' : 'black'
     );
+    document.documentElement.style.setProperty(
+      '--recuperacion',
+      this.icono == 'oscuro' ? 'black' : 'white'
+    );
     this.icono = this.icono == 'oscuro' ? 'claro' : 'oscuro';
     localStorage.setItem('tema', this.icono);
   }

@@ -55,10 +55,10 @@ ion-button[type="submit"] {
 .seccion {
   background-color: var(--seccion);
   border-radius: 10px;
-  padding: 20px; /* Añadir espacio interno */
+  padding: 20px;
   width: 100%;
-  max-width: 500px; /* Aumentar el tamaño de la sección */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Añadir una sombra suave para mejorar la apariencia */
+  max-width: 500px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 #contenedor,h1,p{
     transition: background-color .5s ease,color .5s ease ;
@@ -68,13 +68,14 @@ ion-button[type="submit"] {
 }
 
 /*               Modal              */
-/* Estilos para el modal */
 ion-modal {
   --background: var(--recuperacion); 
-  --backdrop-opacity: 0.5; /* Opacidad del fondo */
+  --backdrop-opacity: 0.5;
+
+  
 }
 
-.contenedor-modal {
+ntenedor-modal {
   background-color: var(--recuperacion); 
   color:var(--textos);
   border-radius: 10px; 
@@ -86,13 +87,17 @@ ion-modal {
   flex-direction: column;
 }
 
+ion-modal {
+  --background: #1f1f1f; /* Color de fondo oscuro */
+  --color: white;        /* Color del texto en blanco */}
+
 /* Estilo del botón dentro del modal */
 .contenedor-modal button {
-  background-color: #007bff; 
-  color: #ffffff; 
+  background-color: #f0cc00; 
+  color: #000000; 
   border: none; 
   padding: 10px 15px; 
-  border-radius: 5px; 
+  border-radius: 5px;   
   cursor: pointer; 
 }
 
