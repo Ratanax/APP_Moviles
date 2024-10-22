@@ -1,11 +1,5 @@
 
-.fondo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--fondo-borde);
-}
+
 
 .contenedor {
   background-color: var(--fondo);
@@ -22,11 +16,7 @@
     font-size: 3rem;
   }
 
-  ion-icon {
-    font-size: 5.5rem;
-    color: var(--textos);
-  }
-
+ 
   ion-button {
     width: 75%;
     height: 2.5rem;

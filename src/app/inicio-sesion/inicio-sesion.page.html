@@ -1,7 +1,10 @@
 <ion-content [fullscreen]="true">
   <div class="fondo">
     <div id="contenedor">
-      <ion-icon src="/assets/{{icono}}.svg" id="tema-claro" (click)="cambiarTema()"></ion-icon>
+      <div class="containerLogo">
+        <ion-icon src="/assets/Logo.svg" id="logo">src</ion-icon>
+        <ion-icon src="/assets/{{icono}}.svg" id="tema-claro" (click)="cambiarTema()"></ion-icon>
+      </div>
       <div class="seccion">
         <ion-input [(ngModel)]="usuario" label="Usuario:" labelPlacement="stacked" fill="outline" maxlength="25">
         </ion-input>
