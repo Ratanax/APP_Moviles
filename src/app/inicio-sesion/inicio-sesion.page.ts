@@ -15,6 +15,8 @@ export class InicioSesionPage implements OnInit {
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
+
+  
   icono = 'oscuro';
 
   usuarios = [

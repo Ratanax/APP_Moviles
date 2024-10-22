@@ -10,11 +10,11 @@
         </ion-input>
         <div class="contenedor-input">
           <ion-input [(ngModel)]="clave" label="contraseña:" type="{{sw?'text':'password'}}" labelPlacement="floating" fill="outline" color="warning">
-            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+            <ion-input-password-toggle slot="end" color="warning"></ion-input-password-toggle>
           </ion-input>
         </div>
         <ion-button class="iniciar" expand="block" (click)="login()" color="warning">Iniciar sesión</ion-button>
-        <ion-button expand="block" (click)="setOpen(true)">Recuperar contraseña</ion-button>
+        <ion-button class="recuperar" expand="block" (click)="setOpen(true)" color="warning">Recuperar contraseña</ion-button>
       </div>
     </div>
     <ion-loading [isOpen]="cargando" message="Iniciando sesión..." spinner="circles"></ion-loading>
