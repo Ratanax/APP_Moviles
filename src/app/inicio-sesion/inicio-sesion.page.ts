@@ -35,6 +35,11 @@ export class InicioSesionPage implements OnInit {
       usuario: 'luc.padilla@duocuc.cl',
       clave: '123123123',
     },
+    {
+      gmail: 'Fernando sepulveda',
+      usuario: 'fer.sepulvedac@gmail.com',
+      clave: '123123123',
+    },
   ];
   usuario = '';
   clave = '';
