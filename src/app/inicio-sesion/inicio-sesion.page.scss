@@ -10,16 +10,7 @@
   height: 80%;
 }
 
-.fondo{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--fondo-borde);
-}
-.fondo{
-  transition: background-color 1s ease,color 1s ease ;
-}
+
 
 
 
@@ -77,13 +68,51 @@ ion-button[type="submit"] {
 }
 
 /*               Modal              */
+/* Estilos para el modal */
+ion-modal {
+  --background: var(--recuperacion); 
+  --backdrop-opacity: 0.5; /* Opacidad del fondo */
+}
 
-.contenedor-modal{
+.contenedor-modal {
+  background-color: var(--recuperacion); 
+  color:var(--textos);
+  border-radius: 10px; 
+  padding: 20px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+  max-width: 90%; 
+  margin: auto; 
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
-  min-height: 80vh;
-  row-gap: 20vh;
-  
+}
+
+/* Estilo del botón dentro del modal */
+.contenedor-modal button {
+  background-color: #007bff; 
+  color: #ffffff; 
+  border: none; 
+  padding: 10px 15px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+/* Estilo del input dentro del modal */
+.contenedor-modal input {
+  background-color: #333; 
+  color: #ffffff;
+  border:var(--highlight-color); 
+  padding: 10px; 
+  border-radius: 5px; 
+  width: 100%; 
+  margin-top: 10px; 
+}
+
+.inner-scroll {
+  background-color: var(--recuperacion) !important;
+
+}
+.scroll-y {
+  background-color: var(--recuperacion)!important;
+  overflow-y: var(--overflow);
+  overscroll-behavior-y: contain;
 }

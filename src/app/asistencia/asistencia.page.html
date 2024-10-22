@@ -22,13 +22,13 @@
 
               <!--Asignaturas -->
       <!-- Asignaturas -->
-      <ion-list>
-        <ion-item *ngFor="let item of items; let i = index" class="item-background-color">
-          <ul class="itemContainer">
-            <li>
-              <span>{{ item }}</span>
-              <ion-button fill="clear" (click)="toggleInfo(i)" color="warning">
-                <ion-icon [name]="showInfo[i] ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+      <ion-list class="Asignaturas">
+        <ion-item class="Asignaturas" *ngFor="let item of items; let i = index" class="item-background-color">
+          <ul class="Asignaturas">
+            <li class="Asignaturas">
+              <span class="Asignaturas">{{ item }}</span>
+              <ion-button  fill="clear" (click)="toggleInfo(i)" color="warning">
+                <ion-icon class="lista" [name]="showInfo[i] ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
               </ion-button>
             </li>
             <ion-item-divider *ngIf="showInfo[i]">

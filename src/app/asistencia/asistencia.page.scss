@@ -1,5 +1,5 @@
 //:root {
-//  --fondo: #e8e6e6; 
+//  --fondo: #e8e6e6;
 //  --fondo-input: #e8e6e6;
 //  --icono-tema: #8c8c8c;
 //  --seccion: #cfcfcf;
@@ -7,7 +7,7 @@
 //  --ion-color-success: black;
 //}
 
-#contenedor{
+#contenedor {
   min-height: 100vh;
   padding: 5%;
   display: flex;
@@ -15,51 +15,36 @@
   row-gap: 2vh;
 }
 
-.scanner{
+.scanner {
   width: 90%;
   max-width: 500px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border: 2px solid #FFC409; 
+  border: 2px solid #ffc409;
   border-radius: 8px;
   margin: 0 auto 20px auto;
-  background-color: var(--item-bg);
+  background-color:var(--asignaturas);
   color: var(--texto-input);
-  
-
 }
 
-.botones{
+.botones {
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 10px;
+  color: var(--texto-input);
 }
 
-button{
+button {
   height: 2rem;
   width: calc(50% - 5px);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.lista {
+  color: var(--item-bg);;
+}
 
 ion-content {
   display: flex;
@@ -68,7 +53,7 @@ ion-content {
   align-items: center;
   background-color: var(--fondo);
 }
-.fondo{
+.fondo {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -76,8 +61,10 @@ ion-content {
   background-color: var(--fondo-borde);
 }
 
-.contenedor{
-    background-color: var(--fondo);//este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
+.contenedor {
+  background-color: var(
+    --fondo
+  ); //este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,13 +72,12 @@ ion-content {
   row-gap: 15px;
   min-height: 100vh;
   width: 80%;
-  height: 80% ;
-  h1{
-    color:var(--texto-input);
+  height: 80%;
+  h1 {
+    color: var(--texto-input);
   }
-  ion-icon{
+  ion-icon {
     font-size: 2.5rem;
-
   }
 }
 
@@ -99,15 +85,14 @@ ion-content {
   text-align: center;
   margin: 20px;
   z-index: 1;
-  ion-icon{
+  ion-icon {
     font-size: 5.5rem;
     color: var(--texto-input);
-    
   }
 }
 
 .logo {
-  width: 150px; 
+  width: 150px;
 }
 
 ion-title {
@@ -123,54 +108,63 @@ ion-title {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  border: 2px solid #FFC409; 
+  border: 2px solid #ffc409;
   border-radius: 8px;
   margin: 0 auto 20px auto;
-  background-color: var(--item-bg);
+  background-color:var(--asignaturas);
   color: var(--texto-input);
-  
 }
 
-.itemContainer {
+.Asignaturas {
   width: 100%;
-  color: var(--texto-input); 
-  list-style-type: none; 
+  color: var(--texto-input);
+  list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 0; 
+   border-radius: 8px;
+
 }
 
-.itemContainer li {
+.Asignaturas li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: var(--item-bg); 
+  background-color:var(--asignaturas);
   border-radius: 8px;
-  transition: background-color 0.5s ease, color 0.5s ease; 
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.itemContainer li ion-button {
+.Asignaturas li ion-button {
   --color: var(--texto-input);
 }
 
 .item-background-color {
-  --ion-item-background: var(--item-bg); 
+  --ion-item-background:var(--asignaturas);
 }
 
-.generadorAsistencia, ion-list, ion-item-divider {
-  background-color: var(--item-bg); 
-  color: var(--texto-input); 
+.generadorAsistencia,
+ion-list,
+ion-item-divider {
+  background-color:var(--asignaturas);
+  color: var(--texto-input);
 }
-
-.fondo, .contenedor, h1, p, ion-icon {
+.Asignaturas{
+  background-color: var(--asignaturas);
+}
+.fondo,
+.contenedor,
+h1,
+p,
+ion-icon {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 ion-item {
-  text-align: center; 
+  text-align: center;
 }
 
-#tema-claro{
+#tema-claro {
   color: var(--icono-tema);
   position: absolute;
   right: 4%;
@@ -178,32 +172,38 @@ ion-item {
   font-size: 1.5rem;
 }
 
-
 ion-list {
   width: 90%;
   max-width: 500px;
-  margin: 0 auto; 
-  background-color: var(--item-bg);
+  margin: 0 auto;
+  background-color:var(--asignaturas);
 }
 
-.item-background-color{
-  --ion-item-background:var(--item-bg);
+.item-background-color {
+  --ion-item-background:var(--asignaturas);
 }
 //transisiones
 
-.fondo{
-  transition: background-color 1s ease,color 1s ease ;
+.fondo {
+  transition: background-color 1s ease, color 1s ease;
 }
-.contenedor,h1,p,ion-icon{
-  transition: background-color .5s ease,color .5s ease ;
+.contenedor,
+h1,
+p,
+ion-icon {
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.itemContainer, .itemHeader, .item-background-color,ion-list, .generadorAsistencia{
-  transition: background-color .5s ease,color .5s ease ;
-  transition: --ion-item-background .5s ease,color .5s ease ;
-  transition: color .5s ease,color .5s ease ;
-  
-  ion-item-divider{
-  transition: background-color .5s ease,color .5s ease ;
+.Asignaturas,
+.itemHeader,
+.item-background-color,
+ion-list,
+.generadorAsistencia {
+  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: --ion-item-background 0.5s ease, color 0.5s ease;
+  transition: color 0.5s ease, color 0.5s ease;
+
+  ion-item-divider {
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 }

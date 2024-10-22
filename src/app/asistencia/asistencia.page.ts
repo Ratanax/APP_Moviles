@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimationController } from '@ionic/angular';
+
 import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner';
 import { ToastController } from '@ionic/angular';
+import { AlertController, AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-asistencia',
@@ -18,14 +19,30 @@ export class AsistenciaPage implements OnInit {
   constructor(
     private anim: AnimationController,
     private toast: ToastController
+    
   ) {}
 
   ngOnInit() {
     this.cargarAsistencias(); 
     this.showInfo = new Array(this.items.length).fill(false);
     this.animarPag();
+    this.animarLogo();
   }
-
+  animarLogo() {
+    this.anim
+      .create()
+      .addElement(document.querySelector('#logo')!)
+      .duration(500)
+      .iterations(Infinity)
+      .direction('alternate')
+      .easing('ease-in-out')
+      .keyframes([
+        { offset: 0, transform: 'scale(1) rotate(8deg) translateX(10px)' },
+        { offset: 0.5, transform: 'scale(1) rotate(0deg)' },
+        { offset: 1, transform: 'scale(1) rotate(-8deg) translateX(-10px) ' },
+      ])
+      .play();
+  }
   cargarAsistencias() {
     this.asistencias = JSON.parse(localStorage.getItem('asistencias') || '[]');
     this.contarAsistencias();
@@ -138,17 +155,26 @@ export class AsistenciaPage implements OnInit {
       '--ion-color-success',
       this.icono == 'oscuro' ? 'white' : 'black'
     );
+
+
     document.documentElement.style.setProperty(
       '--fondo-borde',
       this.icono == 'oscuro' ? '#1f1f1f' : '#cfcfcf'
     );
+    document.documentElement.style.setProperty(
+      '--asignaturas',
+      this.icono == 'oscuro' ? '#1f1f1f' : '#cfcfcf'
+    );
+
+
+    
     document.documentElement.style.setProperty(
       '--color-list',
       this.icono == 'oscuro' ? '#1f1f1f' : '#cfcfcf'
     );
     document.documentElement.style.setProperty(
       '--item-bg',
-      this.icono == 'oscuro' ? '#1f1f1f' : 'white'
+      this.icono == 'oscuro' ? '#ffc409' : 'ffc409'
     );
     document.documentElement.style.setProperty(
       '--item-text-color',

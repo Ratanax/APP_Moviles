@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController  } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
 @Component({
@@ -16,42 +16,58 @@ export class InicioSesionPage implements OnInit {
     this.isModalOpen = isOpen;
   }
   icono = 'oscuro';
-  
-  usuarios = [{usuario:"juan@juan.cl", clave:"juan123123", },
-              {usuario:"dav.walker@duocuc.cl", clave:"123123123"}
-  ]
-  usuario =""
-  clave =""
-  
+
+  usuarios = [
+    { usuario: 'juan@juan.cl', clave: 'juan123123' },
+    { usuario: 'dav.walker@duocuc.cl', clave: '123123123' },
+    { usuario: 'hu.romerog@duocuc.cl', clave: '123123123' },
+  ];
+  usuario = '';
+  clave = '';
+
   sw: boolean = false;
-  cargando = false; 
+  cargando = false;
   constructor(
-    private http:HttpClient,
+    private http: HttpClient,
     private alert: AlertController,
     private router: Router,
     private anim: AnimationController,
-    private loadingController: LoadingController,
+    private loadingController: LoadingController
   ) {}
-resetPass(){
-  for(let u of this.usuarios){
-    if(u.usuario == this.usuario){
-      let nueva = Math.random().toString(36).slice(-6)
-      u.clave = nueva
-      let body = {
-        "usuario": u.usuario,
-        "app": "registrAPP",
-        "clave":nueva,
-        "email":u.usuario
+  resetPass() {
+    for (let u of this.usuarios) {
+      if (u.usuario == this.usuario) {
+        let nueva = Math.random().toString(36).slice(-6);
+        u.clave = nueva;
+        let body = {
+          usuario: u.usuario,
+          app: 'registrAPP',
+          clave: nueva,
+          email: u.usuario,
+        };
+        this.http
+          .post('https://myths.cl/api/reset_password.php', body)
+          .subscribe((data) => {
+            console.log(data);
+            this.showSuccessAlert();
+          });
+        return;
       }
-      this.http.post("https://myths.cl/api/reset_password.php", body)
-      .subscribe((data)=>{
-        console.log(data)
-      })
-      return;
     }
+    // Si no se encuentra el usuario, puedes agregar un mensaje de error o animación
+    this.alerta('El usuario no fue encontrado.', () => {});
   }
-  
-}
+  async showSuccessAlert() {
+    const alert = await this.alert.create({
+      header: 'Éxito',
+      message:
+        'La contraseña ha sido cambiada con éxito. Porfavor ingresa a tu correo',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
   // Función para animar los errores
 
   animarError(index: number) {
@@ -74,17 +90,25 @@ resetPass(){
           transform: 'translateX(-5px)',
           border: '1px red solid',
         },
-        { offset: 0.5, transform: 'translateX(0px)', border: '1px transparent solid' },
+        {
+          offset: 0.5,
+          transform: 'translateX(0px)',
+          border: '1px transparent solid',
+        },
         {
           offset: 0.75,
           transform: 'translateX(5px)',
           border: '1px red solid',
         },
-        { offset: 1, transform: 'translateX(0px)', border: '1px transparent solid' },
-      ]) 
-      .play() 
+        {
+          offset: 1,
+          transform: 'translateX(0px)',
+          border: '1px transparent solid',
+        },
+      ])
+      .play();
   }
-  
+
   animarLogo() {
     this.anim
       .create()
@@ -99,23 +123,24 @@ resetPass(){
         { offset: 1, transform: 'scale(1) rotate(-8deg) translateX(-10px) ' },
       ])
       .play();
-      
   }
-  
-  // Función de inicio de sesión
   async login() {
-    for(let u of this.usuarios){
-      if(u.usuario==this.usuario && u.clave == this.clave){
-        console.log(`Has ingresado con ${u.usuario}`)
-         // Redirigir a la página de asistencia
+    let usuarioValido = false; // Variable para verificar si el usuario es válido
+    for (let u of this.usuarios) {
+      if (u.usuario === this.usuario && u.clave === this.clave) {
+        console.log(`Has ingresado con ${u.usuario}`);
+        // Redirigir a la página de asistencia
         this.router.navigate(['asistencia']);
+        usuarioValido = true; // Marcamos que el usuario es válido
         return;
       }
-      
     }
-    console.log("Datos incorrectos!")
+
+    // Si las credenciales son incorrectas, ejecutamos la animación de error
+    console.log('Datos incorrectos!');
+    this.animarError(0); // Animar el campo del usuario
+    this.animarError(1); // Animar el campo de la clave
   }
-  
 
   // Función que muestra una alerta
   alerta(texto: string, accion: () => void) {
@@ -132,25 +157,49 @@ resetPass(){
       })
       .then((alert) => alert.present());
   }
-  ionViewWillEnter(){
-   this.icono = localStorage.getItem("tema")! == "oscuro" ? "claro" : "oscuro"
-   this.cambiarTema()
+  ionViewWillEnter() {
+    this.icono = localStorage.getItem('tema')! == 'oscuro' ? 'claro' : 'oscuro';
+    this.cambiarTema();
   }
   // Función para cambiar el tema
   cambiarTema() {
-  
-    document.documentElement.style.setProperty('--fondo',this.icono=="oscuro"?  '#2e2d2d' : '#e8e6e6');
-    document.documentElement.style.setProperty('--fondo-input',this.icono=="oscuro"?  '#2e2d2d' : '#e8e6e6');
-    document.documentElement.style.setProperty('--icono-tema',this.icono=="oscuro"?  '#f0cc00' :  '#8c8c8c');
-    document.documentElement.style.setProperty('--seccion',this.icono=="oscuro"?  '#1f1f1f' : '#cfcfcf');
-    document.documentElement.style.setProperty('--texto-input',this.icono=="oscuro"?  'white' : 'black');
-    document.documentElement.style.setProperty('--fondo-borde',this.icono=="oscuro"?  '#1f1f1f' : '#cfcfcf');
-    document.documentElement.style.setProperty('--ion-color-success',this.icono=="oscuro"?  'white' : 'black');
-    this.icono = this.icono =="oscuro" ? "claro" : "oscuro"
+    document.documentElement.style.setProperty(
+      '--textos',
+      this.icono == 'oscuro' ? 'white' : 'black'
+    );
+    document.documentElement.style.setProperty(
+      '--fondo',
+      this.icono == 'oscuro' ? '#2e2d2d' : '#e8e6e6'
+    );
+    document.documentElement.style.setProperty(
+      '--fondo-input',
+      this.icono == 'oscuro' ? '#2e2d2d' : '#e8e6e6'
+    );
+    document.documentElement.style.setProperty(
+      '--icono-tema',
+      this.icono == 'oscuro' ? '#f0cc00' : '#8c8c8c'
+    );
+    document.documentElement.style.setProperty(
+      '--seccion',
+      this.icono == 'oscuro' ? '#1f1f1f' : '#cfcfcf'
+    );
+    document.documentElement.style.setProperty(
+      '--texto-input',
+      this.icono == 'oscuro' ? 'white' : 'black'
+    );
+    document.documentElement.style.setProperty(
+      '--fondo-borde',
+      this.icono == 'oscuro' ? '#1f1f1f' : '#cfcfcf'
+    );
+    document.documentElement.style.setProperty(
+      '--ion-color-success',
+      this.icono == 'oscuro' ? 'white' : 'black'
+    );
+    this.icono = this.icono == 'oscuro' ? 'claro' : 'oscuro';
     localStorage.setItem('tema', this.icono);
-  
-    }
-  
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.animarLogo();
+  }
 }
