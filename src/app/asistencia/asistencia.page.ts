@@ -17,9 +17,11 @@ export class AsistenciaPage implements OnInit {
   items: string[];
   showInfo: boolean[];
   contenido = '';
+  asistencias: any[] = [];
   constructor(
     private anim: AnimationController,
     private toast: ToastController
+    
   ) {
     this.items = [];
     this.showInfo = [];
@@ -27,12 +29,14 @@ export class AsistenciaPage implements OnInit {
 
   ngOnInit() {
     this.items = ['Base de datos', 'Programación web', 'Inglés', 'Ética'];
-
+    this.cargarAsistencias(); // Cargar asistencias al iniciar
     this.showInfo = new Array(this.items.length).fill(false);
     this.animarPag();
   }
 
-  
+  cargarAsistencias() {
+    this.asistencias = JSON.parse(localStorage.getItem('asistencias') || '[]');
+  }
   async scan() {
     const result = await CapacitorBarcodeScanner.scanBarcode({
       hint: CapacitorBarcodeScannerTypeHint.ALL,
@@ -40,13 +44,14 @@ export class AsistenciaPage implements OnInit {
   
     if (result && result.ScanResult) {
       const qr = result.ScanResult.split("/");
-  
+      this.cargarAsistencias();
       // Crear el objeto de asistencia
       const asistencia = {
         ramo: qr[0],
         docente: qr[1],
         hora: new Date(),
         'hora inicio': qr[2],
+
       };
   
       // Obtener las asistencias anteriores almacenadas en localStorage

@@ -14,7 +14,14 @@
         <ion-button class="botones" size="small" color="warning" (click)="scan()">
           <ion-icon name="play"></ion-icon></ion-button>
       </div>
-
+      <ion-item *ngFor="let asistencia of asistencias">
+        <ion-label>
+          Ramo: {{ asistencia.ramo }}<br>
+          Docente: {{ asistencia.docente }}<br>
+          Hora: {{ asistencia.hora | date: 'shortTime' }}<br>
+          Hora de inicio: {{ asistencia['hora inicio'] }}
+        </ion-label>
+      </ion-item>
       <ion-list>
         <ion-item *ngFor="let item of items; let i = index" class="item-background-color">
           <ul class="itemContainer">
