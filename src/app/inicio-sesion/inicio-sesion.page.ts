@@ -57,6 +57,7 @@ export class InicioSesionPage implements OnInit {
       }
     }
     // Si no se encuentra el usuario, puedes agregar un mensaje de error o animación
+    this.animarError(2);
     this.alerta('El usuario no fue encontrado.', () => {});
   }
   async showSuccessAlert() {
