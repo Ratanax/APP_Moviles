@@ -8,20 +8,20 @@
       </div>
 
       <h1>Asistencia Duoc</h1>
-
+              <!--boton para escanear qr -->
       <div class="scanner">
         <span>Leer QR</span>
         <ion-button class="botones" size="small" color="warning" (click)="scan()">
           <ion-icon name="play"></ion-icon></ion-button>
       </div>
-      <ion-item *ngFor="let asistencia of asistencias">
-        <ion-label>
-          Ramo: {{ asistencia.ramo }}<br>
-          Docente: {{ asistencia.docente }}<br>
-          Hora: {{ asistencia.hora | date: 'shortTime' }}<br>
-          Hora de inicio: {{ asistencia['hora inicio'] }}
-        </ion-label>
-      </ion-item>
+
+
+        <!--Muestra de datos -->
+      
+
+
+              <!--Asignaturas -->
+      <!-- Asignaturas -->
       <ion-list>
         <ion-item *ngFor="let item of items; let i = index" class="item-background-color">
           <ul class="itemContainer">
@@ -31,10 +31,14 @@
                 <ion-icon [name]="showInfo[i] ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
               </ion-button>
             </li>
-            <ion-item-divider *ngIf="showInfo[i]">Asistencia: 100%</ion-item-divider>
+            <ion-item-divider *ngIf="showInfo[i]">
+              Asistencia: {{ (conteoAsistencias[item] || 0) }}%
+            </ion-item-divider>
           </ul>
         </ion-item>
       </ion-list>
+
+
     </div>
   </div>
 </ion-content>

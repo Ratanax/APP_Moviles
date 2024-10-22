@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimationController } from '@ionic/angular';
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
-import {
-  CapacitorBarcodeScanner,
-  CapacitorBarcodeScannerTypeHint,
-} from '@capacitor/barcode-scanner';
+import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -14,55 +10,69 @@ import { ToastController } from '@ionic/angular';
 })
 export class AsistenciaPage implements OnInit {
   icono = 'oscuro';
-  items: string[];
-  showInfo: boolean[];
-  contenido = '';
+  items: string[] = ['Base de datos', 'Programación web', 'Inglés', 'Ética'];
+  showInfo: boolean[] = [];
   asistencias: any[] = [];
+  conteoAsistencias: { [key: string]: number } = {};
+  
   constructor(
     private anim: AnimationController,
     private toast: ToastController
-    
-  ) {
-    this.items = [];
-    this.showInfo = [];
-  }
+  ) {}
 
   ngOnInit() {
-    this.items = ['Base de datos', 'Programación web', 'Inglés', 'Ética'];
-    this.cargarAsistencias(); // Cargar asistencias al iniciar
+    this.cargarAsistencias(); 
     this.showInfo = new Array(this.items.length).fill(false);
     this.animarPag();
   }
 
   cargarAsistencias() {
     this.asistencias = JSON.parse(localStorage.getItem('asistencias') || '[]');
+    this.contarAsistencias();
   }
+
+  contarAsistencias() {
+    this.conteoAsistencias = {};
+
+    // Contar asistencias por ramo
+    this.asistencias.forEach(asistencia => {
+      const ramo = asistencia.ramo;
+      if (this.conteoAsistencias[ramo]) {
+        this.conteoAsistencias[ramo]++;
+      } else {
+        this.conteoAsistencias[ramo] = 1;
+      }
+    });
+  }
+
   async scan() {
     const result = await CapacitorBarcodeScanner.scanBarcode({
       hint: CapacitorBarcodeScannerTypeHint.ALL,
     });
-  
+
     if (result && result.ScanResult) {
       const qr = result.ScanResult.split("/");
-      this.cargarAsistencias();
+      
       // Crear el objeto de asistencia
       const asistencia = {
         ramo: qr[0],
         docente: qr[1],
         hora: new Date(),
         'hora inicio': qr[2],
-
+        'Asistencia': qr[3],
       };
-  
-      // Obtener las asistencias anteriores almacenadas en localStorage
+
+   
       let asistencias = JSON.parse(localStorage.getItem('asistencias') || '[]');
-  
-      // Agregar la nueva asistencia al arreglo
+
+
       asistencias.push(asistencia);
-  
-      // Guardar el arreglo actualizado en localStorage
+
       localStorage.setItem('asistencias', JSON.stringify(asistencias));
-  
+
+      // Contar asistencias después de agregar una nueva
+      this.contarAsistencias();
+
       // Mostrar el resultado
       this.showToast(`Asistencia registrada: ${asistencia.ramo}, ${asistencia.docente}`);
     } else {
