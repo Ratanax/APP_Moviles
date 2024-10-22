@@ -57,7 +57,7 @@ export class InicioSesionPage implements OnInit {
       }
     }
     // Si no se encuentra el usuario, puedes agregar un mensaje de error o animación
-    this.animarError(2);
+    this.animarError2(2);
     this.alerta('El usuario no fue encontrado.', () => {});
   }
   async showSuccessAlert() {
@@ -69,8 +69,48 @@ export class InicioSesionPage implements OnInit {
     });
 
     await alert.present();
+
   }
 
+  
+  animarError2(index: number) {
+    const inputElement = document.querySelectorAll('input')[index];
+
+    this.anim
+      .create()
+      .addElement(inputElement)
+      .duration(300)
+      .direction('alternate')
+      .iterations(5)
+      .keyframes([
+        {
+          offset: 0,
+          transform: 'translateX(0px)',
+          border: '1px transparent solid',
+        },
+        {
+          offset: 0.25,
+          transform: 'translateX(-5px)',
+          border: '1px red solid',
+        },
+        {
+          offset: 0.5,
+          transform: 'translateX(0px)',
+          border: '1px transparent solid',
+        },
+        {
+          offset: 0.75,
+          transform: 'translateX(5px)',
+          border: '1px red solid',
+        },
+        {
+          offset: 1,
+          transform: 'translateX(0px)',
+          border: '1px transparent solid',
+        },
+      ])
+      .play();
+  }
   // Función para animar los errores
 
   animarError(index: number) {
