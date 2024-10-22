@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 
 import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner';
 import { ToastController } from '@ionic/angular';
@@ -18,8 +18,8 @@ export class AsistenciaPage implements OnInit {
   
   constructor(
     private anim: AnimationController,
-    private toast: ToastController
-    
+    private toast: ToastController,
+    private zone: NgZone
   ) {}
 
   ngOnInit() {
@@ -87,11 +87,12 @@ export class AsistenciaPage implements OnInit {
 
       localStorage.setItem('asistencias', JSON.stringify(asistencias));
 
-      // Contar asistencias después de agregar una nueva
+    
       this.contarAsistencias();
 
-      // Mostrar el resultado
+
       this.showToast(`Asistencia registrada: ${asistencia.ramo}, Profesor: ${asistencia.docente}`);
+      //location.reload();
     } else {
       this.showToast('No se pudo escanear el código');
     }
@@ -100,7 +101,7 @@ export class AsistenciaPage implements OnInit {
   async showToast(texto: string) {
     const toast = await this.toast.create({
       message: texto,
-      duration: 7000,
+      duration: 5000,
       positionAnchor: 'footer2',
       cssClass: 'rounded-toast',
     });
@@ -116,13 +117,13 @@ export class AsistenciaPage implements OnInit {
       .easing('ease-out')
 
       .keyframes([
-        { offset: 0, transform: 'scale(1) translateY(300px)', opacity: '0' },
+        { offset: 0, transform: 'scale(1)', opacity: '0' },
         {
           offset: 0.5,
-          transform: 'scale(1) translateY(150px)',
+          transform: 'scale(1)',
           opacity: '0.1',
         },
-        { offset: 1, transform: 'scale(1) translateY(0px)', opacity: '1' },
+        { offset: 1, transform: 'scale(1)', opacity: '1' },
       ])
       .play();
   }
@@ -130,6 +131,9 @@ export class AsistenciaPage implements OnInit {
     this.showInfo[index] = !this.showInfo[index];
   }
 
+  recargar(){
+    location.reload();
+  }
   cambiarTema() {
     document.documentElement.style.setProperty(
       '--fondo',

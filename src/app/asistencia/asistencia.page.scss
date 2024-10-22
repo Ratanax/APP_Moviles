@@ -164,12 +164,21 @@ ion-item {
   text-align: center;
 }
 
-#tema-claro {
-  color: var(--icono-tema);
-  position: absolute;
-  right: 4%;
-  top: 20px;
-  font-size: 1.5rem;
+.recargar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; /* Esto alinea el botón a la derecha */
+
+}
+
+.recargar ion-button {
+  margin-left: auto; /* Asegura que el botón esté a la derecha */
+  height: 30px;
+  width: 40px;
+}
+.recargar ion-icon{
+  height: 40px;
+  width: 50px;
 }
 
 ion-list {
