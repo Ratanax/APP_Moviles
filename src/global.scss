@@ -41,11 +41,13 @@ body.scanner-active {
   --ion-background-color: transparent;
 }
 #tema-claro {
+  display: flex;
   position: absolute;
   top: 20px;   
   right: 12%; //Ajusta la distancia para colocar el icono más a la derecha o a la izquierda, me rendí con intentar moverlo, por alguna razon solo funciona bien en el asistencia
   color: var(--icono-tema);
   font-size: 1.5rem;
+  z-index: 10;
 }
 
   .fondo {

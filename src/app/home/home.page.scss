@@ -1,6 +1,11 @@
 
-
-
+.fondo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--fondo-borde);
+}
 .contenedor {
   background-color: var(--fondo);
   display: flex;

@@ -164,19 +164,14 @@ export class AsistenciaPage implements OnInit {
       '--ion-color-success',
       this.icono == 'oscuro' ? 'white' : 'black'
     );
-
-
     document.documentElement.style.setProperty(
       '--fondo-borde',
       this.icono == 'oscuro' ? '#1f1f1f' : '#cfcfcf'
     );
     document.documentElement.style.setProperty(
       '--asignaturas',
-      this.icono == 'oscuro' ? '#1f1f1f' : '#cfcfcf'
+      this.icono == 'oscuro' ? '#1f1f1f' : 'white'
     );
-
-
-    
     document.documentElement.style.setProperty(
       '--color-list',
       this.icono == 'oscuro' ? '#1f1f1f' : '#cfcfcf'

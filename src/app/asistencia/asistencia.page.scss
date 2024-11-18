@@ -7,13 +7,7 @@
 //  --ion-color-success: black;
 //}
 
-#contenedor {
-  min-height: 100vh;
-  padding: 5%;
-  display: flex;
-  flex-direction: column;
-  row-gap: 2vh;
-}
+
 
 .scanner {
   width: 90%;
@@ -62,18 +56,17 @@ ion-content {
 }
 
 .contenedor {
-  background-color: var(
-    --fondo
-  ); //este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
+  background-color: var(--fondo); //este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 15px;
+  row-gap: 10px;
   min-height: 100vh;
-  width: 80%;
+  width: 80vw;
   height: 80%;
   text-align: center;
+  padding: 5%;
   h1 {
     color: var(--texto-input);
   }
