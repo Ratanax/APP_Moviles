@@ -18,31 +18,10 @@ export class InicioSesionPage implements OnInit {
 
   icono = 'oscuro';
 
-  usuarios = [
-    { gmail: 'Juan pablo', usuario: 'juan@juan.cl', clave: 'juan123123' },
-    {
-      gmail: 'David walker',
-      usuario: 'dav.walker@duocuc.cl',
-      clave: '123123123',
-    },
-    {
-      gmail: 'Hugo romero',
-      usuario: 'hu.romerog@duocuc.cl',
-      clave: '123123123',
-    },
-    {
-      gmail: 'Lucas padilla',
-      usuario: 'luc.padilla@duocuc.cl',
-      clave: '123123123',
-    },
-    {
-      gmail: 'Fernando sepulveda',
-      usuario: 'fer.sepulvedac@gmail.com',
-      clave: '123123123',
-    },
-  ];
-  usuario = '';
-  clave = '';
+  usuarioUser = '';
+  correoUser = '';
+  passwordUser = '';
+  mensaje = '';
 
   sw: boolean = false;
   cargando = false;
@@ -54,30 +33,72 @@ export class InicioSesionPage implements OnInit {
     private loadingController: LoadingController
   ) {}
 
-  resetPass() {
-    for (let u of this.usuarios) {
-      if (u.usuario == this.usuario) {
-        let nueva = Math.random().toString(36).slice(-6);
-        u.clave = nueva;
-        let body = {
-          usuario: u.usuario,
-          app: 'registrAPP',
-          clave: nueva,
-          email: u.usuario,
-        };
-        this.http
-          .post('https://myths.cl/api/reset_password.php', body)
-          .subscribe((data) => {
-            console.log(data);
-            this.showSuccessAlert();
-          });
-        return;
-      }
+  verificarDatos() {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuarioEncontrado = usuarios.find(
+      (u: { correo: string; password: string }) =>
+        u.correo === this.correoUser && u.password === this.passwordUser
+    );
+  
+    if (usuarioEncontrado) {
+      // Guardar el nombre de usuario en LocalStorage
+      localStorage.setItem('Usuario', usuarioEncontrado.Usuario); // Corregir la propiedad aquí
+  
+      console.log('Inicio de sesión exitoso');
+      this.mensaje = 'Inicio de sesión exitoso';
+      this.router.navigate(['asistencia']);
+    } else {
+      console.log('Correo o contraseña incorrectos');
+      this.mensaje = 'Correo o contraseña incorrectos';
     }
-    // Si no se encuentra el usuario, puedes agregar un mensaje de error o animación
-    this.animarError2(2);
-    this.alerta('El usuario no fue encontrado.', () => {});
   }
+  resetPass() {
+    // Recuperar usuarios almacenados en localStorage
+    const usuariosGuardados = localStorage.getItem('usuarios'); // Supongamos que los usuarios están en una clave 'usuarios'
+
+    // Verificar si hay datos en localStorage
+    if (usuariosGuardados) {
+      // Parsear los usuarios como un array de objetos
+      const usuarios = JSON.parse(usuariosGuardados);
+
+      // Buscar el usuario correspondiente
+      for (let u of usuarios) {
+        if (u.usuario === this.usuarioUser) {
+          // Generar una nueva contraseña aleatoria
+          let nueva = Math.random().toString(36).slice(-6);
+          u.clave = nueva;
+
+          // Actualizar el almacenamiento local con la nueva clave
+          localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+          // Crear el body del request para la API
+          let body = {
+            usuario: u.usuario,
+            app: 'registrAPP',
+            password: nueva,
+            email: u.email, // Asegúrate de que el objeto usuario tenga un campo 'email'
+          };
+
+          // Enviar los datos a la API
+          this.http
+            .post('https://myths.cl/api/reset_password.php', body)
+            .subscribe((data) => {
+              console.log(data);
+              this.showSuccessAlert();
+            });
+          return;
+        }
+      }
+
+      // Si no se encuentra el usuario, mostrar animación de error o alerta
+      this.animarError2(0); // Cambia el índice si necesitas otro input
+      this.alerta('El usuario no fue encontrado.', () => {});
+    } else {
+      // Manejar el caso en que no hay usuarios almacenados
+      this.alerta('No hay usuarios registrados.', () => {});
+    }
+  }
+
   async showSuccessAlert() {
     const alert = await this.alert.create({
       header: 'Éxito',
@@ -182,26 +203,6 @@ export class InicioSesionPage implements OnInit {
         { offset: 1, transform: 'scale(1) rotate(-8deg) translateX(-10px) ' },
       ])
       .play();
-  }
-  async login() {
-    let usuarioValido = false; // Variable para verificar si el usuario es válido
-    for (let u of this.usuarios) {
-      if (u.usuario === this.usuario && u.clave === this.clave) {
-        localStorage.setItem('nombreUsuario', u.gmail);
-
-        console.log(`Has ingresado con ${u.usuario}`);
-
-        // Redirigir a la página de asistencia
-        this.router.navigate(['asistencia']);
-        usuarioValido = true; // Marcamos que el usuario es válido
-        return;
-      }
-    }
-
-    // Si las credenciales son incorrectas, ejecutamos la animación de error
-    console.log('Datos incorrectos!');
-    this.animarError(0); // Animar el campo del usuario
-    this.animarError(1); // Animar el campo de la clave
   }
 
   // Función que muestra una alerta

@@ -1,0 +1,55 @@
+<ion-content [fullscreen]="true">
+  <div class="fondo">
+    <div id="contenedor">
+      <div class="containerLogo">
+        <ion-icon src="/assets/Logo.svg" id="logo"></ion-icon>
+      </div>
+      <div class="seccion">
+        <form (ngSubmit)="guardarDatos()">
+
+          <ion-input
+            [(ngModel)]="Usuario"
+            name="Usuario"
+            placeholder="Nombre de Usuario"
+            type="text"
+            required
+            label="Usuario"
+            labelPlacement="stacked"
+            fill="outline"
+            maxlength="25"
+          ></ion-input>
+
+
+          <ion-input
+            [(ngModel)]="correo"
+            name="correo"
+            placeholder="Correo Electrónico"
+            type="email"
+            required
+            label="Correo"
+            labelPlacement="stacked"
+            fill="outline"
+          ></ion-input>
+
+
+          <ion-input
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Contraseña"
+            type="password"
+            required
+            label="Contraseña"
+            labelPlacement="stacked"
+            fill="outline"
+          ></ion-input>
+
+          <!-- Botón para guardar -->
+          <ion-button expand="block" color="warning" type="submit" (click)="guardarDatos()">
+            Registrarse
+          </ion-button>
+        </form>
+        <a href="">¿Ya tienes cuenta?</a>
+      </div>
+    </div>
+  </div>
+</ion-content>
