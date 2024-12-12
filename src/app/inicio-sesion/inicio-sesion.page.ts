@@ -23,6 +23,7 @@ export class InicioSesionPage implements OnInit {
   passwordUser = '';
   mensaje = '';
 
+ 
   sw: boolean = false;
   cargando = false;
   constructor(
@@ -53,49 +54,66 @@ export class InicioSesionPage implements OnInit {
     }
   }
   resetPass() {
+    console.log('Correo ingresado:', this.correoUser);
+    console.log('Usuarios en localStorage:', this.usuarioUser);
+    console.log(localStorage.getItem('usuarios'));
     // Recuperar usuarios almacenados en localStorage
-    const usuariosGuardados = localStorage.getItem('usuarios'); // Supongamos que los usuarios están en una clave 'usuarios'
-
-    // Verificar si hay datos en localStorage
-    if (usuariosGuardados) {
-      // Parsear los usuarios como un array de objetos
-      const usuarios = JSON.parse(usuariosGuardados);
-
-      // Buscar el usuario correspondiente
-      for (let u of usuarios) {
-        if (u.usuario === this.usuarioUser) {
-          // Generar una nueva contraseña aleatoria
-          let nueva = Math.random().toString(36).slice(-6);
-          u.clave = nueva;
-
-          // Actualizar el almacenamiento local con la nueva clave
-          localStorage.setItem('usuarios', JSON.stringify(usuarios));
-
-          // Crear el body del request para la API
-          let body = {
-            usuario: u.usuario,
-            app: 'registrAPP',
-            password: nueva,
-            email: u.email, // Asegúrate de que el objeto usuario tenga un campo 'email'
-          };
-
-          // Enviar los datos a la API
-          this.http
-            .post('https://myths.cl/api/reset_password.php', body)
-            .subscribe((data) => {
-              console.log(data);
-              this.showSuccessAlert();
-            });
-          return;
-        }
-      }
-
-      // Si no se encuentra el usuario, mostrar animación de error o alerta
-      this.animarError2(0); // Cambia el índice si necesitas otro input
-      this.alerta('El usuario no fue encontrado.', () => {});
-    } else {
-      // Manejar el caso en que no hay usuarios almacenados
+    const usuariosGuardados = localStorage.getItem('usuarios');
+  
+    if (!usuariosGuardados) {
       this.alerta('No hay usuarios registrados.', () => {});
+      return;
+    }
+  
+    try {
+      // Intentar parsear los usuarios como un array
+      const usuarios = JSON.parse(usuariosGuardados);
+  
+      // Verificar que sea un array válido
+      if (!Array.isArray(usuarios)) {
+        throw new Error('Formato inválido en localStorage.');
+      }
+  
+      // Buscar al usuario por correo
+      const usuarioEncontrado = usuarios.find(
+        (u) => u.correo && u.correo.trim().toLowerCase() === this.correoUser.trim().toLowerCase()
+      );
+  
+      if (!usuarioEncontrado) {
+        this.animarError2(0);
+        this.alerta('El correo no fue encontrado.', () => {});
+        return;
+      }
+  
+      // Generar una nueva contraseña aleatoria
+      const nuevaClave = Math.random().toString(36).slice(-6);
+      usuarioEncontrado.password = nuevaClave; // Cambiamos la clave aquí
+  
+      // Actualizar almacenamiento local
+      localStorage.setItem('usuarios', JSON.stringify(usuarios));
+  
+      // Crear el body del request
+      const body = {
+        usuario: usuarioEncontrado.Usuario, // Usa el campo "Usuario"
+        app: 'registrAPP',
+        clave: nuevaClave,
+        email: usuarioEncontrado.correo, // Usa "correo" para enviar a la API
+      };
+  
+      // Enviar los datos a la API
+      this.http.post('https://myths.cl/api/reset_password.php', body).subscribe(
+        (data) => {
+          console.log('Respuesta de la API:', data);
+          this.showSuccessAlert();
+        },
+        (error) => {
+          console.error('Error al enviar los datos a la API:', error);
+          this.alerta('No se pudo enviar la solicitud. Inténtalo de nuevo.', () => {});
+        }
+      );
+    } catch (error) {
+      console.error('Error al procesar los datos del almacenamiento local:', error);
+      this.alerta('Ocurrió un problema con los datos locales. Por favor, verifica los datos.', () => {});
     }
   }
 
