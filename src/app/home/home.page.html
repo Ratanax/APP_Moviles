@@ -1,12 +1,12 @@
-<ion-content [fullscreen]="true">      <ion-icon src="/assets/{{icono}}.svg" id="tema-claro" (click)="cambiarTema()"></ion-icon>
+<ion-content [fullscreen]="true">
   <div class="fondo">
+    <div class="background"></div>
     <div class="contenedor">
-
+      <ion-icon src="/assets/{{icono}}.svg" id="tema-claro" (click)="cambiarTema()"></ion-icon>
       <ion-icon src="/assets/Logo.svg" id="logo">src</ion-icon>
       <h1>RegistrAPP</h1>
       <ion-button expand="block" href="inicio-sesion">Iniciar sesión</ion-button>
       <ion-button expand="block" (click)="presentAlert()">Acerca de la App</ion-button>
-      
     </div>
   </div>
 </ion-content>

@@ -46,6 +46,8 @@ ion-content {
   justify-content: center;
   align-items: center;
   background-color: var(--fondo);
+  --background: transparent;
+  position: relative;
 }
 .fondo {
   display: flex;
@@ -53,10 +55,12 @@ ion-content {
   justify-content: center;
   align-items: center;
   background-color: var(--fondo-borde);
+  position: relative;
+  z-index: 1;
 }
 
 .contenedor {
-  background-color: var(--fondo); //este es algo que puedo personalizar dentro de la carpeta theme y variable.scss
+  background-color: var(--fondo);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,6 +77,9 @@ ion-content {
   ion-icon {
     font-size: 2.5rem;
   }
+  position: relative;
+  z-index: 1;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .containerLogo {
@@ -161,12 +168,12 @@ ion-item {
 .recargar {
   width: 100%;
   display: flex;
-  justify-content: flex-end; /* Esto alinea el botón a la derecha */
+  justify-content: flex-end;
 
 }
 
 .recargar ion-button {
-  margin-left: auto; /* Asegura que el botón esté a la derecha */
+  margin-left: auto; 
   height: 30px;
   width: 40px;
 }
@@ -185,7 +192,6 @@ ion-list {
 .item-background-color {
   --ion-item-background:var(--asignaturas);
 }
-//transisiones
 
 .fondo {
   transition: background-color 1s ease, color 1s ease;
@@ -209,4 +215,32 @@ ion-list,
   ion-item-divider {
     transition: background-color 0.5s ease, color 0.5s ease;
   }
+}
+
+.fondo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/foto1.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5; 
+  z-index: 0; 
+  pointer-events: none; 
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/foto1.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 1; 
+  z-index: 0;
+  pointer-events: none;
 }
